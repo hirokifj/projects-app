@@ -13,8 +13,8 @@
     "lint:js": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:js:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:conflict": "eslint-config-prettier 'src/**/*.{js,jsx,ts,tsx}'",
-    "lint:style": "stylelint 'src/**/*.{css,less,sass,scss}'",
-    "lint:style:fix": "stylelint --fix 'src/**/*.{css,less,sass,scss}'"
+    "lint:style": "stylelint 'src/**/*.{css,less,sass,scss,js,jsx,ts,tsx}'",
+    "lint:style:fix": "stylelint --fix 'src/**/*.{css,less,sass,scss,js,jsx,ts,tsx}'"
   },
   "dependencies": {
     "next": "10.0.4",
