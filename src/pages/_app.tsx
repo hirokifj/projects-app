@@ -1,12 +1,16 @@
 import { FC } from 'react';
 import { AppProps } from 'next/app';
-import '@/styles/globals.css';
 import { AuthProvider } from '@/lib/auth';
+import { ChakraProvider, CSSReset } from '@chakra-ui/react';
+import theme from '@/styles/theme';
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => (
-  <AuthProvider>
-    <Component {...pageProps} />
-  </AuthProvider>
+  <ChakraProvider theme={theme}>
+    <CSSReset />
+    <AuthProvider>
+      <Component {...pageProps} />
+    </AuthProvider>
+  </ChakraProvider>
 );
 
 export default MyApp;
