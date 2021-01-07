@@ -80,7 +80,7 @@ module.exports = {
       },
       alias: {
         map: [['@', './src']],
-        extensions: ['.ts', '.js', '.jsx', '.json', '.css', '.scss'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.scss'],
       },
     },
   },
