@@ -63,6 +63,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'import/no-extraneous-dependencies': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
   },
   overrides: [
     {
