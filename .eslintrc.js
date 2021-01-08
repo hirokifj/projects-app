@@ -64,6 +64,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
   },
   overrides: [
     {
