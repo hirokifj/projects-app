@@ -18,6 +18,9 @@ const useProvideAuth = () => {
   const signInWithGoogle = () =>
     firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
 
+  const signInWithGithub = () =>
+    firebase.auth().signInWithPopup(new firebase.auth.GithubAuthProvider());
+
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((currentUser) => {
       if (currentUser) {
@@ -52,6 +55,7 @@ const useProvideAuth = () => {
     authState,
     isAuthorized,
     signInWithGoogle,
+    signInWithGithub,
     redirectIfAuthorized,
     redirectIfUnAuthorized,
   };
