@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { useSocialSignIn } from '@/hooks/useSocialSignIn';
-import { Button, Stack } from '@chakra-ui/react';
+import { Button, Stack, Icon } from '@chakra-ui/react';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
 
 const SocialSignInButtons: FC = () => {
   const { signInWithGoogle, signInWithGithub } = useSocialSignIn();
@@ -8,6 +9,7 @@ const SocialSignInButtons: FC = () => {
   return (
     <Stack spacing={4}>
       <Button
+        leftIcon={<Icon as={FaGoogle} mr="10px" fontSize="24px" />}
         height="48px"
         backgroundColor="white"
         color="gray.900"
@@ -22,6 +24,7 @@ const SocialSignInButtons: FC = () => {
         Googleでログイン
       </Button>
       <Button
+        leftIcon={<Icon as={FaGithub} mr="10px" fontSize="24px" />}
         height="48px"
         backgroundColor="gray.900"
         color="white"
