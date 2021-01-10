@@ -5,8 +5,8 @@ import EmailSignInForm from '@/components/organism/EmailSignInForm';
 import EmailSignInPgaeLinks from '@/components/organism/EmailSignInPgaeLinks';
 
 const Login: FC = () => {
-  const { redirectIfAuthorized, authState } = useAuth();
-  redirectIfAuthorized(authState);
+  const { redirectIfAuthorized } = useAuth();
+  redirectIfAuthorized();
 
   return (
     <Flex

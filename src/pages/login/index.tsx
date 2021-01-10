@@ -5,8 +5,8 @@ import SocialSignInButtons from '@/components/organism/SocialSignInButtons';
 import SocialSignInPageLinks from '@/components/organism/SocialSignInPageLinks';
 
 const Login: FC = () => {
-  const { redirectIfAuthorized, authState } = useAuth();
-  redirectIfAuthorized(authState);
+  const { redirectIfAuthorized } = useAuth();
+  redirectIfAuthorized();
 
   return (
     <Flex

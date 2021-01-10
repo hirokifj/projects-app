@@ -44,14 +44,14 @@ const useProvideAuth = () => {
     return () => unsubscribe();
   }, []);
 
-  const redirectIfAuthorized = (curentAuthState: AuthState) => {
-    if (curentAuthState === 'Authorized') {
+  const redirectIfAuthorized = () => {
+    if (authState === 'Authorized') {
       router.push('/dashboard');
     }
   };
 
-  const redirectIfUnAuthorized = (curentAuthState: AuthState) => {
-    if (curentAuthState === 'UnAuthorized') {
+  const redirectIfUnAuthorized = () => {
+    if (authState === 'UnAuthorized') {
       router.push('/login');
     }
   };

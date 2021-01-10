@@ -5,8 +5,8 @@ import SignUpForm from '@/components/organism/SignUpForm';
 import SignUpPageLinks from '@/components/organism/SignUpPageLinks';
 
 const SignUp: FC = () => {
-  const { redirectIfAuthorized, authState } = useAuth();
-  redirectIfAuthorized(authState);
+  const { redirectIfAuthorized } = useAuth();
+  redirectIfAuthorized();
 
   return (
     <Flex
