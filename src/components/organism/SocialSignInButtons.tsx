@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { useAuth } from '@/lib/auth';
+import { useSocialSignIn } from '@/hooks/useSocialSignIn';
 import { Button, Stack } from '@chakra-ui/react';
 
 const SocialSignInButtons: FC = () => {
-  const { signInWithGoogle, signInWithGithub } = useAuth();
+  const { signInWithGoogle, signInWithGithub } = useSocialSignIn();
 
   return (
     <Stack spacing={4}>
