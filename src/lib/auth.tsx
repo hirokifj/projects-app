@@ -66,7 +66,7 @@ const useProvideAuth = () => {
     signUpWithEmail,
     redirectIfAuthorized,
     redirectIfUnAuthorized,
-  };
+  } as const;
 };
 
 const AuthContext = createContext<ReturnType<typeof useProvideAuth> | null>(
