@@ -3,7 +3,7 @@ import { Button, Stack } from '@chakra-ui/react';
 import InputControl from '@/components/molecule/InputControl';
 import { useFirebaseEmailSignIn } from '@/hooks/useFirebaseEmailSignIn';
 
-const SignInForm: FC = () => {
+const EmailSignInForm: FC = () => {
   const {
     signIn,
     loading,
@@ -55,4 +55,4 @@ const SignInForm: FC = () => {
   );
 };
 
-export default SignInForm;
+export default EmailSignInForm;
