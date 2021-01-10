@@ -49,7 +49,7 @@ const EmailSignInForm: FC = () => {
         }}
         isLoading={loading}
       >
-        登録
+        ログイン
       </Button>
     </Stack>
   );
