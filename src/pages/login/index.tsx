@@ -1,23 +1,11 @@
 import { FC } from 'react';
-import NextLink from 'next/link';
 import { useAuth } from '@/lib/auth';
-import {
-  Flex,
-  Button,
-  Stack,
-  StackDivider,
-  Heading,
-  Center,
-  Link,
-} from '@chakra-ui/react';
+import { Flex, Stack, StackDivider, Heading, Center } from '@chakra-ui/react';
+import SocialSignInButtons from '@/components/organism/SocialSignInButtons';
+import SocialSignInPageLinks from '@/components/organism/SocialSignInPageLinks';
 
 const Login: FC = () => {
-  const {
-    redirectIfAuthorized,
-    authState,
-    signInWithGoogle,
-    signInWithGithub,
-  } = useAuth();
+  const { redirectIfAuthorized, authState } = useAuth();
   redirectIfAuthorized(authState);
 
   return (
@@ -44,43 +32,8 @@ const Login: FC = () => {
           </Heading>
         </Center>
         <Stack direction="column" width="80%" mx="auto" spacing={8}>
-          <Stack spacing={4}>
-            <Button
-              height="48px"
-              backgroundColor="white"
-              color="gray.900"
-              variant="outline"
-              _hover={{ bg: 'gray.100' }}
-              _active={{
-                bg: 'gray.100',
-                transform: 'scale(0.95)',
-              }}
-              onClick={() => signInWithGoogle()}
-            >
-              Googleでログイン
-            </Button>
-            <Button
-              height="48px"
-              backgroundColor="gray.900"
-              color="white"
-              variant="outline"
-              _hover={{ bg: 'gray.700' }}
-              _active={{
-                bg: 'gray.800',
-                transform: 'scale(0.95)',
-              }}
-              onClick={() => signInWithGithub()}
-            >
-              GitHubでログイン
-            </Button>
-          </Stack>
-          <Center>
-            <NextLink href="/login/email" passHref>
-              <Link fontSize="14px" color="blue.400">
-                メールアドレスでログイン
-              </Link>
-            </NextLink>
-          </Center>
+          <SocialSignInButtons />
+          <SocialSignInPageLinks />
         </Stack>
       </Stack>
     </Flex>

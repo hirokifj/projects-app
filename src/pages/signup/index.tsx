@@ -1,15 +1,8 @@
 import { FC } from 'react';
-import NextLink from 'next/link';
 import { useAuth } from '@/lib/auth';
-import {
-  Flex,
-  Stack,
-  StackDivider,
-  Heading,
-  Center,
-  Link,
-} from '@chakra-ui/react';
+import { Flex, Stack, StackDivider, Heading, Center } from '@chakra-ui/react';
 import SignUpForm from '@/components/organism/SignUpForm';
+import SignUpPageLinks from '@/components/organism/SignUpPageLinks';
 
 const SignUp: FC = () => {
   const { redirectIfAuthorized, authState } = useAuth();
@@ -40,22 +33,7 @@ const SignUp: FC = () => {
         </Center>
         <Stack direction="column" width="90%" mx="auto" spacing={8}>
           <SignUpForm />
-          <Stack direction="column" spacing={4}>
-            <Center>
-              <NextLink href="/login" passHref>
-                <Link fontSize="14px" color="blue.400">
-                  SNSアカウントでログイン
-                </Link>
-              </NextLink>
-            </Center>
-            <Center>
-              <NextLink href="/login/email" passHref>
-                <Link fontSize="14px" color="blue.400">
-                  メールアドレスでログイン
-                </Link>
-              </NextLink>
-            </Center>
-          </Stack>
+          <SignUpPageLinks />
         </Stack>
       </Stack>
     </Flex>

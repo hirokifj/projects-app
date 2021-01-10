@@ -1,18 +1,8 @@
 import { FC } from 'react';
-import NextLink from 'next/link';
 import { useAuth } from '@/lib/auth';
-import {
-  Flex,
-  Button,
-  Stack,
-  StackDivider,
-  Heading,
-  Center,
-  Link,
-  FormControl,
-  FormLabel,
-  Input,
-} from '@chakra-ui/react';
+import { Flex, Stack, StackDivider, Heading, Center } from '@chakra-ui/react';
+import EmailSignInForm from '@/components/organism/EmailSignInForm';
+import EmailSignInPgaeLinks from '@/components/organism/EmailSignInPgaeLinks';
 
 const Login: FC = () => {
   const { redirectIfAuthorized, authState } = useAuth();
@@ -42,45 +32,8 @@ const Login: FC = () => {
           </Heading>
         </Center>
         <Stack direction="column" width="90%" mx="auto" spacing={8}>
-          <Stack as="form" spacing={6}>
-            <FormControl id="email">
-              <FormLabel>メールアドレス</FormLabel>
-              <Input type="email" />
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel>パスワード</FormLabel>
-              <Input type="password" />
-            </FormControl>
-            <Button
-              height="52px"
-              backgroundColor="gray.900"
-              color="white"
-              variant="outline"
-              _hover={{ bg: 'gray.700' }}
-              _active={{
-                bg: 'gray.800',
-                transform: 'scale(0.95)',
-              }}
-            >
-              ログイン
-            </Button>
-          </Stack>
-          <Stack direction="column" spacing={4}>
-            <Center>
-              <NextLink href="/login" passHref>
-                <Link fontSize="14px" color="blue.400">
-                  SNSアカウントでログイン
-                </Link>
-              </NextLink>
-            </Center>
-            <Center>
-              <NextLink href="/signup" passHref>
-                <Link fontSize="14px" color="blue.400">
-                  メールアドレスで登録
-                </Link>
-              </NextLink>
-            </Center>
-          </Stack>
+          <EmailSignInForm />
+          <EmailSignInPgaeLinks />
         </Stack>
       </Stack>
     </Flex>
