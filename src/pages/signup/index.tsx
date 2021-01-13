@@ -22,7 +22,7 @@ const SignUp: FC = () => {
         px={6}
         py={10}
         backgroundColor="white"
-        borderRadius={[0, 8]}
+        borderRadius={8}
         divider={<StackDivider borderColor="gray.200" />}
         spacing={6}
       >
