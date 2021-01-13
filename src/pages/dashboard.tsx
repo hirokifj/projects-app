@@ -2,8 +2,8 @@ import { FC } from 'react';
 import { useAuth } from '@/lib/auth';
 
 const Dashboard: FC = () => {
-  const { authState, redirectIfUnAuthorized, isAuthorized, user } = useAuth();
-  redirectIfUnAuthorized(authState);
+  const { redirectIfUnAuthorized, isAuthorized, user } = useAuth();
+  redirectIfUnAuthorized();
 
   if (!isAuthorized && !user) {
     return <div>Loading...</div>;
