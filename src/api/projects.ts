@@ -39,3 +39,28 @@ export const fetchAllProjects = () =>
         ...doc.data(),
       })),
     );
+
+export const fetchProjects: (options?: {
+  tag: string;
+  language: string;
+}) => Promise<Project[]> = (options) => {
+  let query = firebase
+    .firestore()
+    .collection('projects')
+    .withConverter(projectConverter)
+    .orderBy('createdAt', 'desc');
+
+  if (options?.tag) {
+    query = query.where('tags', 'array-contains', options.tag);
+  }
+  if (options?.language) {
+    query = query.where('language', '==', options.language);
+  }
+
+  return query.get().then((res) =>
+    res.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    })),
+  );
+};
