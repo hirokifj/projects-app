@@ -13,6 +13,8 @@ const ProjectList: FC<{ projects: Project[] }> = ({ projects }) => (
           description={project.description}
           commentCounts={project.commentCounts}
           likeCounts={project.likeCounts}
+          tags={project.tags}
+          language={project.language}
         />
       </Box>
     ))}
