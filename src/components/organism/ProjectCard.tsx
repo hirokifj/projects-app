@@ -21,6 +21,8 @@ const ProjectCard: FC<Project> = ({
   description,
   commentCounts,
   likeCounts,
+  tags,
+  language,
 }) => (
   <NextLink href={`projects/${id}`} passHref>
     <Box
@@ -53,14 +55,13 @@ const ProjectCard: FC<Project> = ({
               </Text>
             </Box>
             <Wrap>
+              {tags.map((tag) => (
+                <WrapItem key={tag}>
+                  <Tag colorScheme="blue">{tag}</Tag>
+                </WrapItem>
+              ))}
               <WrapItem>
-                <Tag>React</Tag>
-              </WrapItem>
-              <WrapItem>
-                <Tag>Redux</Tag>
-              </WrapItem>
-              <WrapItem>
-                <Tag>Redux</Tag>
+                <Tag colorScheme="blue">{language}</Tag>
               </WrapItem>
             </Wrap>
             <Flex alignItems="flex-start" justify="space-between">
