@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import CommentsCounter from '@/components/molecule/CommentsCounter';
 import LikeButton from '@/components/molecule/LikeButton';
+import LoadingImgBox from '@/components/molecule/LoadingImgBox';
 
 const ProjectCard: FC<Project> = ({
   id,
@@ -43,6 +44,7 @@ const ProjectCard: FC<Project> = ({
               alt="Segun Adebayo"
               objectFit="cover"
               borderRadius={4}
+              fallback={<LoadingImgBox />}
             />
           </AspectRatio>
         </Box>
