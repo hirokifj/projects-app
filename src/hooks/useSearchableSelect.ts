@@ -25,8 +25,9 @@ export const useSearchableSelect = <T extends SearchableSelectOption>(
   useEffect(() => {
     if (keyword === '') {
       setSelectedValue('');
+      onSelectOption('');
     }
-  }, [keyword, onSelectOption]);
+  }, [keyword, setSelectedValue, onSelectOption]);
 
   const selectOption = (option: T) => {
     setSelectedValue(option.value);
