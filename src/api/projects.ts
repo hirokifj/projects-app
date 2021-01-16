@@ -19,6 +19,8 @@ const projectConverter = {
       description: data.description,
       commentCounts: data.commentCounts,
       likeCounts: data.likeCounts,
+      language: data.language,
+      tags: data.tags,
     };
     /* eslint-enable */
   },
