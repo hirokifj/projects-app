@@ -4,11 +4,10 @@ import ProjectCard from '@/components/organism/ProjectCard';
 import { Project } from '@/types/project';
 
 const ProjectList: FC<{ projects: Project[] }> = ({ projects }) => (
-  <Stack spacing={4} width="680px">
+  <Stack spacing={6} width="100%">
     {projects.map((project) => (
-      <Box minHeight="180px">
+      <Box minHeight="180px" key={project.id}>
         <ProjectCard
-          key={project.id}
           id={project.id}
           title={project.title}
           description={project.description}
