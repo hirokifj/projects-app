@@ -4,5 +4,6 @@ export interface Project {
   description: string;
   commentCounts: number;
   likeCounts: number;
-  tags?: Record<string, boolean>;
+  language: string;
+  tags: string[];
 }
