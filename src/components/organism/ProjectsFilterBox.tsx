@@ -5,7 +5,7 @@ import LanguageSelect from '@/components/organism/LanguageSelect';
 import { Tag } from '@/types/tag';
 import { Language } from '@/types/language';
 
-const FilterBox: FC<{
+const ProjectsFilterBox: FC<{
   tags: Tag[];
   onSelectTag: (tagId: Tag['id']) => void;
   onSelectLanguage: (language: Language | '') => void;
@@ -25,4 +25,4 @@ const FilterBox: FC<{
   </Box>
 );
 
-export default FilterBox;
+export default ProjectsFilterBox;
