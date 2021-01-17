@@ -10,14 +10,7 @@ const ProjectsFilterBox: FC<{
   onSelectTag: (tagId: Tag['id']) => void;
   onSelectLanguage: (language: Language | '') => void;
 }> = ({ tags, onSelectTag, onSelectLanguage }) => (
-  <Box
-    width="100%"
-    background="white"
-    borderRadius={8}
-    backgroundColor="white"
-    px={4}
-    py={4}
-  >
+  <Box width="100%" borderRadius={8} backgroundColor="white" px={4} py={4}>
     <Stack spacing="4">
       <TagSelect tags={tags} onSelect={onSelectTag} />
       <LanguageSelect onSelect={onSelectLanguage} />
