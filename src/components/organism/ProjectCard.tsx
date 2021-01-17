@@ -35,6 +35,10 @@ const ProjectCard: FC<Project> = ({
       backgroundColor="white"
       px={4}
       py={4}
+      transition="background-color .4s"
+      _hover={{
+        bg: 'gray.200',
+      }}
     >
       <Flex>
         <Box width="27%" mr="24px" flexShrink={0}>
