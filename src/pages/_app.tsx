@@ -4,14 +4,17 @@ import { AuthProvider } from '@/lib/auth';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import theme from '@/styles/theme';
 import AppLayout from '@/components/template/AppLyaout';
+import { ReactQueryProvider } from '@/lib/reactQuery';
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => (
   <ChakraProvider theme={theme}>
     <CSSReset />
     <AuthProvider>
-      <AppLayout>
-        <Component {...pageProps} />
-      </AppLayout>
+      <ReactQueryProvider>
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
+      </ReactQueryProvider>
     </AuthProvider>
   </ChakraProvider>
 );
