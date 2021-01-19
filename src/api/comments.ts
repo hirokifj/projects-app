@@ -9,6 +9,7 @@ const commentConverter = {
     return {
       userId: comment.userId,
       userName: comment.userName,
+      userImgPath: comment.userImgPath,
       projectId: comment.projectId,
       body: comment.body,
       createdAt: comment.createdAt,
@@ -25,6 +26,7 @@ const commentConverter = {
     return {
       userId: data.userId,
       userName: data.userName,
+      userImgPath: data.userImgPath,
       projectId: data.projectId,
       body: data.body,
       createdAt: new Date(data.createdAt),
@@ -42,6 +44,7 @@ export const createComment = (comment: CommentWithoutId) =>
     .add({
       userId: comment.userId,
       userName: comment.userName,
+      userImgPath: comment.userImgPath,
       projectId: comment.projectId,
       body: comment.body,
       createdAt: comment.createdAt,
