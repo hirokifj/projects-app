@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Stack, Box } from '@chakra-ui/react';
 import { SkeletonProjectCard } from '@/components/project/ProjectCard/';
 
-const SkeletonProjectList: FC = () => (
+export const SkeletonProjectList: FC = () => (
   <Stack spacing={6} width="100%">
     <Box>
       <SkeletonProjectCard />
@@ -12,5 +12,3 @@ const SkeletonProjectList: FC = () => (
     </Box>
   </Stack>
 );
-
-export default SkeletonProjectList;

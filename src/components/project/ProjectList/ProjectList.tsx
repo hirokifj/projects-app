@@ -3,7 +3,7 @@ import { Stack, Box } from '@chakra-ui/react';
 import { ProjectCard } from '@/components/project/ProjectCard/';
 import { Project } from '@/types/project';
 
-const ProjectList: FC<{ projects: Project[] }> = ({ projects }) => (
+export const ProjectList: FC<{ projects: Project[] }> = ({ projects }) => (
   <Stack spacing={6} width="100%">
     {projects.map((project) => (
       <Box minHeight="180px" key={project.id}>
@@ -22,5 +22,3 @@ const ProjectList: FC<{ projects: Project[] }> = ({ projects }) => (
     ))}
   </Stack>
 );
-
-export default ProjectList;
