@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 interface User {
   id: string;
   name: string;
+  imgPath: string;
 }
 
 type AuthState = 'Loading' | 'Authorized' | 'UnAuthorized';
@@ -33,6 +34,7 @@ const useProvideAuth = () => {
         setUser({
           id: currentUser.uid,
           name: currentUser.displayName ?? '',
+          imgPath: currentUser.photoURL ?? '',
         });
         setAuthState('Authorized');
       } else {
