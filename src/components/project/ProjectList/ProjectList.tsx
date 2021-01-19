@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Stack, Box } from '@chakra-ui/react';
-import { ProjectCard } from '@/components/project/ProjectCard/ProjectCard';
+import { ProjectCard } from '@/components/project/ProjectCard/';
 import { Project } from '@/types/project';
 
 const ProjectList: FC<{ projects: Project[] }> = ({ projects }) => (
