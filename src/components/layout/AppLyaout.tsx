@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Flex, Box } from '@chakra-ui/react';
-import Header from '@/components/organism/Header';
-import Footer from '@/components/organism/Footer';
+import Header from '@/components/header/Header';
+import Footer from '@/components/footer/Footer';
 
 const AppLayout: FC = ({ children }) => (
   <Flex direction="column" width="100%" height="0" minHeight="100vh">

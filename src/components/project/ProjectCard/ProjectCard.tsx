@@ -12,9 +12,9 @@ import {
   WrapItem,
   Tag,
 } from '@chakra-ui/react';
-import CommentsCounter from '@/components/molecule/CommentsCounter';
-import LikeButton from '@/components/molecule/LikeButton';
-import LoadingImgBox from '@/components/molecule/LoadingImgBox';
+import CommentsCounter from '@/components/project/ProjectCard/CommentsCounter';
+import LikeButton from '@/components/project/ProjectCard/LikeButton';
+import LoadingImgBox from '@/components/core/LoadingImgBox';
 
 const ProjectCard: FC<Project> = ({
   id,

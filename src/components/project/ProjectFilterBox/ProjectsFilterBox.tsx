@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Box, Stack } from '@chakra-ui/react';
-import TagSelect from '@/components/organism/TagSelect';
-import LanguageSelect from '@/components/organism/LanguageSelect';
+import TagSelect from '@/components/project/ProjectFilterBox/TagSelect';
+import LanguageSelect from '@/components/project/ProjectFilterBox/LanguageSelect';
 import { Tag } from '@/types/tag';
 import { Language } from '@/types/language';
 

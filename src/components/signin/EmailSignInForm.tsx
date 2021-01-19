@@ -1,21 +1,21 @@
 import { FC } from 'react';
 import { Button, Stack } from '@chakra-ui/react';
-import InputControl from '@/components/molecule/InputControl';
-import { useFirebaseEmailSignUp } from '@/hooks/useFirebaseEmailSignUp';
+import InputControl from '@/components/core/InputControl';
+import { useFirebaseEmailSignIn } from '@/hooks/useFirebaseEmailSignIn';
 
-const SignUpForm: FC = () => {
+const EmailSignInForm: FC = () => {
   const {
-    signUp,
+    signIn,
     loading,
     RHFRegister,
     emailRules,
     passwordRules,
     emailErrMsg,
     passwordErrMsg,
-  } = useFirebaseEmailSignUp();
+  } = useFirebaseEmailSignIn();
 
   return (
-    <Stack as="form" spacing={6} onSubmit={signUp}>
+    <Stack as="form" spacing={6} onSubmit={signIn}>
       <InputControl
         inputId="email"
         type="text"
@@ -49,10 +49,10 @@ const SignUpForm: FC = () => {
         }}
         isLoading={loading}
       >
-        登録
+        ログイン
       </Button>
     </Stack>
   );
 };
 
-export default SignUpForm;
+export default EmailSignInForm;
