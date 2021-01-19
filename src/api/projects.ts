@@ -21,6 +21,8 @@ const projectConverter = {
       likeCounts: data.likeCounts,
       language: data.language,
       tags: data.tags,
+      url: data.url,
+      imgPath: data.imgPath,
     };
     /* eslint-enable */
   },
@@ -64,3 +66,20 @@ export const fetchProjects: (options?: {
     })),
   );
 };
+
+export const fetchProjectById = (projectId: Project['id']) =>
+  firebase
+    .firestore()
+    .collection('projects')
+    .doc(projectId)
+    .withConverter(projectConverter)
+    .get()
+    .then((res) => {
+      if (!res.exists) throw new Error('Data is not found.');
+
+      const data = res.data() as ProjectWithoutId;
+      return {
+        id: res.id,
+        ...data,
+      };
+    });

@@ -6,4 +6,6 @@ export interface Project {
   likeCounts: number;
   language: string;
   tags: string[];
+  url: string;
+  imgPath: string;
 }
