@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Flex, Box } from '@chakra-ui/react';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
-const MultiColumns: FC<{
+export const MultiColumns: FC<{
   leftContent: ReactJSXElement;
   rightContent: ReactJSXElement;
 }> = ({ leftContent, rightContent }) => (
@@ -15,5 +15,3 @@ const MultiColumns: FC<{
     </Flex>
   </Box>
 );
-
-export default MultiColumns;

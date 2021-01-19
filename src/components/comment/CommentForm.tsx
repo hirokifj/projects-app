@@ -1,7 +1,7 @@
 import { FC, useState, ChangeEvent } from 'react';
 import { Box, Textarea, Button } from '@chakra-ui/react';
 
-const CommentForm: FC<{ onSubmit: (body: string) => void }> = ({
+export const CommentForm: FC<{ onSubmit: (body: string) => void }> = ({
   onSubmit,
 }) => {
   const [comment, setComment] = useState('');
@@ -29,5 +29,3 @@ const CommentForm: FC<{ onSubmit: (body: string) => void }> = ({
     </Box>
   );
 };
-
-export default CommentForm;

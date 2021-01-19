@@ -12,7 +12,7 @@ interface Props {
   chakraButtonProps?: ButtonProps;
 }
 
-const LikeButton: FC<Props> = ({
+export const LikeButton: FC<Props> = ({
   count,
   isLiked,
   onClick,
@@ -27,5 +27,3 @@ const LikeButton: FC<Props> = ({
     {count}
   </Button>
 );
-
-export default LikeButton;

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Box, Stack, Skeleton } from '@chakra-ui/react';
 
-const SkeletonTagsFilterBox: FC = () => (
+export const SkeletonFilterBox: FC = () => (
   <Box
     width="100%"
     background="white"
@@ -22,5 +22,3 @@ const SkeletonTagsFilterBox: FC = () => (
     </Stack>
   </Box>
 );
-
-export default SkeletonTagsFilterBox;

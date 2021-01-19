@@ -2,7 +2,7 @@ import { FC } from 'react';
 import NextLink from 'next/link';
 import { Stack, Center, Link } from '@chakra-ui/react';
 
-const EmailSignInPageLinks: FC = () => (
+export const EmailSignInPageLinks: FC = () => (
   <Stack direction="column" spacing={4}>
     <Center>
       <NextLink href="/login" passHref>
@@ -20,5 +20,3 @@ const EmailSignInPageLinks: FC = () => (
     </Center>
   </Stack>
 );
-
-export default EmailSignInPageLinks;

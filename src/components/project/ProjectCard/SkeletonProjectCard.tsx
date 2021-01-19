@@ -10,7 +10,7 @@ import {
   SkeletonText,
 } from '@chakra-ui/react';
 
-const SkeletonProjectCard: FC = () => (
+export const SkeletonProjectCard: FC = () => (
   <Box>
     <Box
       as="a"
@@ -52,5 +52,3 @@ const SkeletonProjectCard: FC = () => (
     </Box>
   </Box>
 );
-
-export default SkeletonProjectCard;

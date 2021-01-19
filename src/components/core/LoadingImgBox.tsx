@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Flex, Spinner } from '@chakra-ui/react';
 
-const CommentsCounter: FC = () => (
+export const LoadingImgBox: FC = () => (
   <Flex
     justify="center"
     alignItems="center"
@@ -12,5 +12,3 @@ const CommentsCounter: FC = () => (
     <Spinner size="md" color="gray.300" />
   </Flex>
 );
-
-export default CommentsCounter;

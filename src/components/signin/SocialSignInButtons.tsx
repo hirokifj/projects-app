@@ -3,7 +3,7 @@ import { useSocialSignIn } from '@/hooks/useSocialSignIn';
 import { Button, Stack, Icon } from '@chakra-ui/react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 
-const SocialSignInButtons: FC = () => {
+export const SocialSignInButtons: FC = () => {
   const { signInWithGoogle, signInWithGithub } = useSocialSignIn();
 
   return (
@@ -41,5 +41,3 @@ const SocialSignInButtons: FC = () => {
     </Stack>
   );
 };
-
-export default SocialSignInButtons;

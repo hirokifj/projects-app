@@ -8,7 +8,7 @@ export interface Option {
   value: string;
 }
 
-const SearchableSelect: FC<{
+export const SearchableSelect: FC<{
   displayNum?: number;
   placeholder?: string;
   searchPlaceholder: string;
@@ -129,5 +129,3 @@ const SearchableSelect: FC<{
     </Box>
   );
 };
-
-export default SearchableSelect;

@@ -6,11 +6,9 @@ interface Props {
   count: number;
 }
 
-const CommentsCounter: FC<Props> = ({ count }) => (
+export const CommentsCounter: FC<Props> = ({ count }) => (
   <Tag variant="outline">
     <TagLeftIcon as={FaComments} />
     <TagLabel>{count}</TagLabel>
   </Tag>
 );
-
-export default CommentsCounter;

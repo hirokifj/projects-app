@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Button, Stack } from '@chakra-ui/react';
-import InputControl from '@/components/core/InputControl';
+import { InputControl } from '@/components/core/InputControl';
 import { useFirebaseEmailSignIn } from '@/hooks/useFirebaseEmailSignIn';
 
-const EmailSignInForm: FC = () => {
+export const EmailSignInForm: FC = () => {
   const {
     signIn,
     loading,
@@ -54,5 +54,3 @@ const EmailSignInForm: FC = () => {
     </Stack>
   );
 };
-
-export default EmailSignInForm;

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Box, Flex, Text } from '@chakra-ui/react';
 
-const Footer: FC = () => (
+export const Footer: FC = () => (
   <Box backgroundColor="gray.700">
     <Flex
       maxW="1100px"
@@ -17,5 +17,3 @@ const Footer: FC = () => (
     </Flex>
   </Box>
 );
-
-export default Footer;

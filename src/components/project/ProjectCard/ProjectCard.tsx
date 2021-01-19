@@ -12,11 +12,11 @@ import {
   WrapItem,
   Tag,
 } from '@chakra-ui/react';
-import CommentsCounter from '@/components/project/ProjectCard/CommentsCounter';
-import LikeButton from '@/components/project/ProjectCard/LikeButton';
-import LoadingImgBox from '@/components/core/LoadingImgBox';
+import { CommentsCounter } from '@/components/project/ProjectCard/CommentsCounter';
+import { LikeButton } from '@/components/project/ProjectCard/LikeButton';
+import { LoadingImgBox } from '@/components/core/LoadingImgBox';
 
-const ProjectCard: FC<Project> = ({
+export const ProjectCard: FC<Project> = ({
   id,
   title,
   description,
@@ -88,5 +88,3 @@ const ProjectCard: FC<Project> = ({
     </Box>
   </NextLink>
 );
-
-export default ProjectCard;

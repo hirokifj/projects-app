@@ -19,7 +19,7 @@ interface Props {
   readonly autoFocus?: boolean;
 }
 
-const InputControl: FC<Props> = ({
+export const InputControl: FC<Props> = ({
   inputId,
   type,
   name,
@@ -35,5 +35,3 @@ const InputControl: FC<Props> = ({
     <FormErrorMessage>{errorMsg}</FormErrorMessage>
   </FormControl>
 );
-
-export default InputControl;

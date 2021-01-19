@@ -2,7 +2,7 @@ import { FC } from 'react';
 import NextLink from 'next/link';
 import { Box, Flex, Link, Heading } from '@chakra-ui/react';
 
-const Header: FC = () => (
+export const Header: FC = () => (
   <Box>
     <Flex
       maxW="1100px"
@@ -28,5 +28,3 @@ const Header: FC = () => (
     </Flex>
   </Box>
 );
-
-export default Header;

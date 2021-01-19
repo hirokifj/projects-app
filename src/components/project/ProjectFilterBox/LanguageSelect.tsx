@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Box, Text } from '@chakra-ui/react';
-import SearchableSelect, { Option } from '@/components/core/SearchableSelect';
+import { SearchableSelect, Option } from '@/components/core/SearchableSelect';
 import { Language } from '@/types/language';
 
-const TagSelect: FC<{
+export const LanguageSelect: FC<{
   onSelect: (lang: Language | '') => void;
 }> = ({ onSelect }) => {
   const options: Option[] = [
@@ -38,5 +38,3 @@ const TagSelect: FC<{
     </Box>
   );
 };
-
-export default TagSelect;
