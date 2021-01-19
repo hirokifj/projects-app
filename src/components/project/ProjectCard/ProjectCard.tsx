@@ -13,7 +13,7 @@ import {
   Tag,
 } from '@chakra-ui/react';
 import { CommentsCounter } from '@/components/project/ProjectCard/CommentsCounter';
-import { LikeButton } from '@/components/project/ProjectCard/LikeButton';
+import { LikeButton } from '@/components/project/LikeButton';
 import { LoadingImgBox } from '@/components/core/LoadingImgBox';
 
 export const ProjectCard: FC<Project> = ({
