@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Stack, Box } from '@chakra-ui/react';
-import ProjectCard from '@/components/organism/ProjectCard';
+import ProjectCard from '@/components/ProjectCard/ProjectCard';
 import { Project } from '@/types/project';
 
 const ProjectList: FC<{ projects: Project[] }> = ({ projects }) => (
@@ -15,6 +15,8 @@ const ProjectList: FC<{ projects: Project[] }> = ({ projects }) => (
           likeCounts={project.likeCounts}
           tags={project.tags}
           language={project.language}
+          url={project.url}
+          imgPath={project.imgPath}
         />
       </Box>
     ))}
