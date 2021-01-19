@@ -1,28 +1,32 @@
-import { FC, useState, ChangeEvent } from 'react';
-import { Box, Textarea, Button } from '@chakra-ui/react';
+import { FC } from 'react';
+import { Box, Button } from '@chakra-ui/react';
+import { TextareaControl } from '@/components/core/TextAreaControl';
+import { useCommentForm } from '@/hooks/useCommentForm';
 
-export const CommentForm: FC<{ onSubmit: (body: string) => void }> = ({
-  onSubmit,
-}) => {
-  const [comment, setComment] = useState('');
-
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setComment(e.currentTarget.value);
-  };
-
-  const handleSubmit = () => {
-    onSubmit(comment);
-  };
+export const CommentForm: FC<{
+  onSubmit: (body: string) => Promise<void> | undefined;
+}> = ({ onSubmit }) => {
+  const {
+    submit,
+    RHFRegister,
+    commentRules,
+    commentErrMsg,
+    processing,
+  } = useCommentForm(onSubmit);
 
   return (
-    <Box as="form">
-      <Textarea
+    <Box as="form" onSubmit={submit}>
+      <TextareaControl
+        inputId="comment"
+        name="comment"
         placeholder="コメントする"
-        value={comment}
-        onChange={handleChange}
+        register={RHFRegister}
+        rules={commentRules}
+        isInvalid={!!commentErrMsg}
+        errorMsg={commentErrMsg}
       />
       <Box textAlign="right" mt="2">
-        <Button width="120px" onClick={handleSubmit}>
+        <Button type="submit" width="120px" isLoading={processing}>
           送信
         </Button>
       </Box>
