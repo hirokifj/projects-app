@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Box, Button } from '@chakra-ui/react';
-import { TextareaControl } from '@/components/core/TextAreaControl';
+import { TextareaControl } from '@/components/core/TextareaControl';
 import { useCommentForm } from '@/hooks/useCommentForm';
 
 export const CommentForm: FC<{
