@@ -4,7 +4,7 @@ import { TextareaControl } from '@/components/core/TextareaControl';
 import { useCommentForm } from '@/hooks/useCommentForm';
 
 export const CommentForm: FC<{
-  onSubmit: (body: string) => Promise<void> | undefined;
+  onSubmit: (body: string) => Promise<void>;
 }> = ({ onSubmit }) => {
   const {
     submit,

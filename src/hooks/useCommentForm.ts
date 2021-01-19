@@ -7,7 +7,7 @@ export interface CommentFormValue {
 }
 
 export const useCommentForm = (
-  onSubmit: (body: Comment['body']) => Promise<void> | undefined,
+  onSubmit: (body: Comment['body']) => Promise<void>,
 ) => {
   const [processing, setProcessing] = useState(false);
   // react-hook-form v7で修正予定。
