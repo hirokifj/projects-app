@@ -20,7 +20,7 @@ const commentConverter = {
     snapshot: firebase.firestore.QueryDocumentSnapshot,
     options: firebase.firestore.SnapshotOptions,
   ): CommentWithoutId {
-    /* eslint-disable @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unsafe-assignment */
+    /* eslint-disable @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call */
     const data = snapshot.data(options)!;
 
     return {
@@ -29,8 +29,8 @@ const commentConverter = {
       userImgPath: data.userImgPath,
       projectId: data.projectId,
       body: data.body,
-      createdAt: new Date(data.createdAt),
-      updatedAt: new Date(data.updatedAt),
+      createdAt: data.createdAt.toDate(),
+      updatedAt: data.updatedAt.toDate(),
     };
     /* eslint-enable */
   },
