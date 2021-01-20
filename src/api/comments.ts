@@ -56,7 +56,7 @@ export const fetchProjectAllComments = (projetId: Project['id']) =>
     .firestore()
     .collection('comments')
     .withConverter(commentConverter)
-    .orderBy('createdAt', 'desc')
+    .orderBy('createdAt', 'asc')
     .where('projectId', '==', projetId)
     .get()
     .then((res) =>
