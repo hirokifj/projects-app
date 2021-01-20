@@ -36,19 +36,19 @@ const commentConverter = {
   },
 };
 
-export const createComment = (comment: CommentWithoutId) =>
+export const createComment = (data: CommentWithoutId) =>
   firebase
     .firestore()
     .collection('comments')
     .withConverter(commentConverter)
     .add({
-      userId: comment.userId,
-      userName: comment.userName,
-      userImgPath: comment.userImgPath,
-      projectId: comment.projectId,
-      body: comment.body,
-      createdAt: comment.createdAt,
-      updatedAt: comment.updatedAt,
+      userId: data.userId,
+      userName: data.userName,
+      userImgPath: data.userImgPath,
+      projectId: data.projectId,
+      body: data.body,
+      createdAt: data.createdAt,
+      updatedAt: data.updatedAt,
     });
 
 export const fetchProjectAllComments = (projetId: Project['id']) =>
