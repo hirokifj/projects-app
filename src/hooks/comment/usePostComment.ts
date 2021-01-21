@@ -11,7 +11,7 @@ export interface CommentFormValue {
   readonly comment: string;
 }
 
-export const useCommentForm = (projectId: Project['id']) => {
+export const usePostComment = (projectId: Project['id']) => {
   const { user } = useAuth();
   const toast = useToast();
   // react-hook-form v7で修正予定。

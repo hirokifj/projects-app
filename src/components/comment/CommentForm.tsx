@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Box, Button } from '@chakra-ui/react';
 import { TextareaControl } from '@/components/core/TextareaControl';
-import { useCommentForm } from '@/hooks/comment/useCommentForm';
+import { usePostComment } from '@/hooks/comment/usePostComment';
 import { Project } from '@/types/project';
 
 export const CommentForm: FC<{
@@ -13,7 +13,7 @@ export const CommentForm: FC<{
     commentRules,
     commentErrMsg,
     processing,
-  } = useCommentForm(projectId);
+  } = usePostComment(projectId);
 
   return (
     <Box as="form" onSubmit={postComment}>
