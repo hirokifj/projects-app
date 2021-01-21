@@ -12,9 +12,11 @@ type AuthState = 'Loading' | 'Authorized' | 'UnAuthorized';
 
 const useProvideAuth = () => {
   const [authState, setAuthState] = useState<AuthState>('Loading');
-  const isAuthorized = authState === 'Authorized';
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
+
+  const isAuthorized = authState === 'Authorized';
+  const isUnAuthorized = authState === 'UnAuthorized';
 
   const signInWithGoogle = () =>
     firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
@@ -62,6 +64,7 @@ const useProvideAuth = () => {
     user,
     authState,
     isAuthorized,
+    isUnAuthorized,
     signInWithGoogle,
     signInWithGithub,
     signInWithEmail,
