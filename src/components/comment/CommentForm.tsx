@@ -1,21 +1,22 @@
 import { FC } from 'react';
 import { Box, Button } from '@chakra-ui/react';
 import { TextareaControl } from '@/components/core/TextareaControl';
-import { useCommentForm } from '@/hooks/useCommentForm';
+import { useCommentForm } from '@/hooks/comment/useCommentForm';
+import { Project } from '@/types/project';
 
 export const CommentForm: FC<{
-  onSubmit: (body: string) => Promise<void>;
-}> = ({ onSubmit }) => {
+  projectId: Project['id'];
+}> = ({ projectId }) => {
   const {
-    submit,
+    postComment,
     RHFRegister,
     commentRules,
     commentErrMsg,
     processing,
-  } = useCommentForm(onSubmit);
+  } = useCommentForm(projectId);
 
   return (
-    <Box as="form" onSubmit={submit}>
+    <Box as="form" onSubmit={postComment}>
       <TextareaControl
         inputId="comment"
         name="comment"
