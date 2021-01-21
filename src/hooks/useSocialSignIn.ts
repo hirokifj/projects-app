@@ -38,5 +38,5 @@ export const useSocialSignIn = () => {
   return {
     signInWithGoogle,
     signInWithGithub,
-  };
+  } as const;
 };

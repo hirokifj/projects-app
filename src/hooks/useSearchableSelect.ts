@@ -129,5 +129,5 @@ export const useSearchableSelect = <T extends SearchableSelectOption>(
     handleOptionClick,
     handleOptionKeyDown,
     isSelectedOption,
-  };
+  } as const;
 };

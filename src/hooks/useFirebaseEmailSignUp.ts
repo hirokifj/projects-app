@@ -64,5 +64,5 @@ export const useFirebaseEmailSignUp = () => {
     passwordRules,
     emailErrMsg,
     passwordErrMsg,
-  };
+  } as const;
 };
