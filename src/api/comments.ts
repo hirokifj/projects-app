@@ -1,4 +1,5 @@
 import firebase from '@/lib/firebase';
+import { projectConverter } from '@/api/projects';
 import { CommentWithoutId } from '@/types/comment';
 import { Project } from '@/types/project';
 
@@ -34,20 +35,37 @@ const commentConverter = {
   },
 };
 
-export const createComment = (data: CommentWithoutId) =>
-  firebase
+export const createComment = (data: CommentWithoutId) => {
+  const batch = firebase.firestore().batch();
+
+  const newCommentRef = firebase
     .firestore()
     .collection('comments')
     .withConverter(commentConverter)
-    .add({
-      userId: data.userId,
-      userName: data.userName,
-      userImgPath: data.userImgPath,
-      projectId: data.projectId,
-      body: data.body,
-      createdAt: data.createdAt,
-      updatedAt: data.updatedAt,
-    });
+    .doc();
+
+  batch.set(newCommentRef, {
+    userId: data.userId,
+    userName: data.userName,
+    userImgPath: data.userImgPath,
+    projectId: data.projectId,
+    body: data.body,
+    createdAt: data.createdAt,
+    updatedAt: data.updatedAt,
+  });
+
+  const projectRef = firebase
+    .firestore()
+    .collection('projects')
+    .doc(data.projectId)
+    .withConverter(projectConverter);
+
+  batch.update(projectRef, {
+    commentCounts: firebase.firestore.FieldValue.increment(1),
+  });
+
+  return batch.commit();
+};
 
 export const fetchProjectAllComments = (projetId: Project['id']) =>
   firebase
