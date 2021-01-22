@@ -20,7 +20,7 @@ export const ProjectCard: FC<Project> = ({
   id,
   title,
   description,
-  commentCounts,
+  commentsCount,
   likeCounts,
   tags,
   language,
@@ -71,7 +71,7 @@ export const ProjectCard: FC<Project> = ({
               </WrapItem>
             </Wrap>
             <Flex alignItems="flex-start" justify="space-between">
-              <CommentsCounter count={commentCounts} />
+              <CommentsCounter count={commentsCount} />
               <LikeButton
                 count={likeCounts}
                 isLiked

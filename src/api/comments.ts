@@ -61,7 +61,7 @@ export const createComment = (data: CommentWithoutId) => {
     .withConverter(projectConverter);
 
   batch.update(projectRef, {
-    commentCounts: firebase.firestore.FieldValue.increment(1),
+    commentsCount: firebase.firestore.FieldValue.increment(1),
   });
 
   return batch.commit();
