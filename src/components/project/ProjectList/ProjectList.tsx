@@ -12,7 +12,7 @@ export const ProjectList: FC<{ projects: Project[] }> = ({ projects }) => (
           title={project.title}
           description={project.description}
           commentsCount={project.commentsCount}
-          likeCounts={project.likeCounts}
+          likesCount={project.likesCount}
           tags={project.tags}
           language={project.language}
           url={project.url}

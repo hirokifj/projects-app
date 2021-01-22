@@ -23,7 +23,7 @@ export const ProjectDetailContent: FC<{ project: Project }> = ({ project }) => (
         </Link>
       </Heading>
       <LikeButton
-        count={project.likeCounts}
+        count={project.likesCount}
         isLiked
         onClick={() => {
           // TODO: like機能の実装

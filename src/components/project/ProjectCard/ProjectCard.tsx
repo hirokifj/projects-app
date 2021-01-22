@@ -21,7 +21,7 @@ export const ProjectCard: FC<Project> = ({
   title,
   description,
   commentsCount,
-  likeCounts,
+  likesCount,
   tags,
   language,
 }) => (
@@ -73,7 +73,7 @@ export const ProjectCard: FC<Project> = ({
             <Flex alignItems="flex-start" justify="space-between">
               <CommentsCounter count={commentsCount} />
               <LikeButton
-                count={likeCounts}
+                count={likesCount}
                 isLiked
                 // eslint-disable-next-line
                 onClick={(e: MouseEvent<HTMLButtonElement>) => {

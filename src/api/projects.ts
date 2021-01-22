@@ -16,7 +16,7 @@ export const projectConverter = {
       title: data.title,
       description: data.description,
       commentsCount: data.commentsCount,
-      likeCounts: data.likeCounts,
+      likesCount: data.likesCount,
       language: data.language,
       tags: data.tags,
       url: data.url,

@@ -3,7 +3,7 @@ export interface Project {
   title: string;
   description: string;
   commentsCount: number;
-  likeCounts: number;
+  likesCount: number;
   language: string;
   tags: string[];
   url: string;
