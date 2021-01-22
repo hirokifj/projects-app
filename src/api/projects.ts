@@ -3,7 +3,7 @@ import { Project } from '@/types/project';
 
 type ProjectWithoutId = Omit<Project, 'id'>;
 
-const projectConverter = {
+export const projectConverter = {
   toFirestore() {
     return {};
   },
