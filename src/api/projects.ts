@@ -1,4 +1,4 @@
-import firebase from '@/lib/firebase';
+import firebase, { db } from '@/lib/firebase';
 import { Project, ProjectWithoutId } from '@/types/project';
 
 export const projectConverter = {
@@ -27,8 +27,7 @@ export const projectConverter = {
 };
 
 export const fetchAllProjects = () =>
-  firebase
-    .firestore()
+  db()
     .collection('projects')
     .withConverter(projectConverter)
     .orderBy('createdAt', 'desc')
@@ -44,8 +43,7 @@ export const fetchProjects: (options?: {
   tag: string;
   language: string;
 }) => Promise<Project[]> = (options) => {
-  let query = firebase
-    .firestore()
+  let query = db()
     .collection('projects')
     .withConverter(projectConverter)
     .orderBy('createdAt', 'desc');
@@ -66,8 +64,7 @@ export const fetchProjects: (options?: {
 };
 
 export const fetchProjectById = (projectId: Project['id']) =>
-  firebase
-    .firestore()
+  db()
     .collection('projects')
     .doc(projectId)
     .withConverter(projectConverter)

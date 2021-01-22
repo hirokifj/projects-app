@@ -1,4 +1,4 @@
-import firebase from '@/lib/firebase';
+import firebase, { db } from '@/lib/firebase';
 import { Tag, TagWithoutId } from '@/types/tag';
 
 const tagConverter = {
@@ -20,8 +20,7 @@ const tagConverter = {
 };
 
 export const fetchAllTags: () => Promise<Tag[]> = () =>
-  firebase
-    .firestore()
+  db()
     .collection('tags')
     .withConverter(tagConverter)
     .get()
