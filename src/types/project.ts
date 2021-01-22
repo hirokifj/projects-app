@@ -9,3 +9,5 @@ export interface Project {
   url: string;
   imgPath: string;
 }
+
+export type ProjectWithoutId = Omit<Project, 'id'>;

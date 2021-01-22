@@ -1,7 +1,5 @@
 import firebase from '@/lib/firebase';
-import { Tag } from '@/types/tag';
-
-type TagWithoutId = Omit<Tag, 'id'>;
+import { Tag, TagWithoutId } from '@/types/tag';
 
 const tagConverter = {
   toFirestore() {

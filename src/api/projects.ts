@@ -1,7 +1,5 @@
 import firebase from '@/lib/firebase';
-import { Project } from '@/types/project';
-
-type ProjectWithoutId = Omit<Project, 'id'>;
+import { Project, ProjectWithoutId } from '@/types/project';
 
 export const projectConverter = {
   toFirestore() {

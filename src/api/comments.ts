@@ -1,8 +1,6 @@
 import firebase from '@/lib/firebase';
-import { Comment } from '@/types/comment';
+import { CommentWithoutId } from '@/types/comment';
 import { Project } from '@/types/project';
-
-type CommentWithoutId = Omit<Comment, 'id'>;
 
 const commentConverter = {
   toFirestore(comment: CommentWithoutId): firebase.firestore.DocumentData {
