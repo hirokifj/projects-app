@@ -8,6 +8,7 @@ import { FaRegHeart, FaHeart } from 'react-icons/fa';
 interface Props {
   count: number;
   isLiked: boolean;
+  loading: boolean;
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
   chakraButtonProps?: ButtonProps;
 }
@@ -15,6 +16,7 @@ interface Props {
 export const LikeButton: FC<Props> = ({
   count,
   isLiked,
+  loading,
   onClick,
   chakraButtonProps,
 }) => (
@@ -22,6 +24,7 @@ export const LikeButton: FC<Props> = ({
     variant="outline"
     leftIcon={isLiked ? <Icon as={FaHeart} /> : <Icon as={FaRegHeart} />}
     onClick={onClick}
+    isLoading={loading}
     {...chakraButtonProps}
   >
     {count}

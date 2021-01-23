@@ -14,7 +14,19 @@ import { LikeButton } from '@/components/project/LikeButton';
 import { MultilineText } from '@/components/core/MultilineText';
 import { Project } from '@/types/project';
 
-export const ProjectDetailContent: FC<{ project: Project }> = ({ project }) => (
+export const ProjectDetailContent: FC<{
+  project: Project;
+  isLiked: boolean;
+  likesCount: number;
+  loadingLikesCount: boolean;
+  onLikeButtonClick: () => void;
+}> = ({
+  project,
+  isLiked,
+  likesCount,
+  loadingLikesCount,
+  onLikeButtonClick,
+}) => (
   <Box>
     <Flex alignItems="center">
       <Heading as="h1" fontSize="20px" width="70%" mr="auto">
@@ -23,11 +35,10 @@ export const ProjectDetailContent: FC<{ project: Project }> = ({ project }) => (
         </Link>
       </Heading>
       <LikeButton
-        count={project.likesCount}
-        isLiked
-        onClick={() => {
-          // TODO: like機能の実装
-        }}
+        count={likesCount}
+        isLiked={isLiked}
+        loading={loadingLikesCount}
+        onClick={onLikeButtonClick}
       />
     </Flex>
     <Box mt="4">
