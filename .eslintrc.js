@@ -66,6 +66,7 @@ module.exports = {
     '@typescript-eslint/no-floating-promises': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'import/prefer-default-export': 'off',
+    'no-use-before-define': 'off',
   },
   overrides: [
     {
