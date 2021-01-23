@@ -1,6 +1,8 @@
+import { User } from '@/types/user';
+
 export interface Comment {
   id: string;
-  userId: string;
+  userId: User['id'];
   userName: string;
   userImgPath: string;
   projectId: string;
