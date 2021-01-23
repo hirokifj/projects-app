@@ -1,30 +1,5 @@
-import firebase, { db } from '@/lib/firebase';
-import { Project, ProjectWithoutId } from '@/types/project';
-
-export const projectConverter = {
-  toFirestore() {
-    return {};
-  },
-  fromFirestore(
-    snapshot: firebase.firestore.QueryDocumentSnapshot,
-    options: firebase.firestore.SnapshotOptions,
-  ): ProjectWithoutId {
-    /* eslint-disable @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unsafe-assignment */
-    const data = snapshot.data(options)!;
-
-    return {
-      title: data.title,
-      description: data.description,
-      commentsCount: data.commentsCount,
-      likesCount: data.likesCount,
-      language: data.language,
-      tags: data.tags,
-      url: data.url,
-      imgPath: data.imgPath,
-    };
-    /* eslint-enable */
-  },
-};
+import { db } from '@/lib/firebase';
+import { Project, ProjectWithoutId, projectConverter } from '@/types/project';
 
 export const fetchAllProjects = () =>
   db()

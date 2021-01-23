@@ -1,23 +1,5 @@
-import firebase, { db } from '@/lib/firebase';
-import { Tag, TagWithoutId } from '@/types/project';
-
-const tagConverter = {
-  toFirestore() {
-    return {};
-  },
-  fromFirestore(
-    snapshot: firebase.firestore.QueryDocumentSnapshot,
-    options: firebase.firestore.SnapshotOptions,
-  ): TagWithoutId {
-    /* eslint-disable @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unsafe-assignment */
-    const data = snapshot.data(options)!;
-
-    return {
-      label: data.label,
-    };
-    /* eslint-enable */
-  },
-};
+import { db } from '@/lib/firebase';
+import { Tag, tagConverter } from '@/types/project';
 
 export const fetchAllTags: () => Promise<Tag[]> = () =>
   db()
