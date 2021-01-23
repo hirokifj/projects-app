@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Box, Text } from '@chakra-ui/react';
-import { SearchableSelect, Option } from '@/components/core/SearchableSelect';
+import { SearchableSelect, Option } from '@/components/core/SearchableSelect/';
 import { Language } from '@/types/project';
 
 export const LanguageSelect: FC<{

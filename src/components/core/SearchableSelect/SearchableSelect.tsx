@@ -1,12 +1,8 @@
 import { FC, KeyboardEvent } from 'react';
 import { Box, Input, Text, Icon, Flex } from '@chakra-ui/react';
 import { FaAngleDown } from 'react-icons/fa';
-import { useSearchableSelect } from '@/hooks/useSearchableSelect';
-
-export interface Option {
-  label: string;
-  value: string;
-}
+import { useSearchableSelect } from './useSearchableSelect';
+import { Option } from './types';
 
 export const SearchableSelect: FC<{
   displayNum?: number;
