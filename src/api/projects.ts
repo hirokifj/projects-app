@@ -53,3 +53,6 @@ export const fetchProjectById = (projectId: Project['id']) =>
         ...data,
       };
     });
+
+export const fetchProjectLikesCountById = async (projectId: Project['id']) =>
+  (await fetchProjectById(projectId)).likesCount;
