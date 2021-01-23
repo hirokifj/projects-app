@@ -1,5 +1,4 @@
-import { Tag } from '@/types/tag';
-import { Language } from '@/types/language';
+import { Tag, Language } from '@/types/project';
 
 const projectBaseKey = 'projects/';
 

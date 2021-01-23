@@ -2,8 +2,7 @@ import { useState, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useProjectTags } from '@/hooks/project/useProjectTags';
 import { fetchProjects } from '@/api/projects';
-import { Tag } from '@/types/tag';
-import { Language } from '@/types/language';
+import { Tag, Language } from '@/types/project';
 import { getProjectJoinedTag } from '@/utils/project';
 import { getProjectsFetcherKey } from './fetcherKey';
 
