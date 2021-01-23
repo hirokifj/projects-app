@@ -1,12 +1,7 @@
 import { FC, useState, useEffect, useContext, createContext } from 'react';
 import firebase from '@/lib/firebase';
 import { useRouter } from 'next/router';
-
-interface User {
-  id: string;
-  name: string;
-  imgPath: string;
-}
+import { User } from '@/types/user';
 
 type AuthState = 'Loading' | 'Authorized' | 'UnAuthorized';
 
