@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 import { SearchableSelect, Option } from '@/components/core/SearchableSelect';
-import { Tag } from '@/types/tag';
+import { Tag } from '@/types/project';
 
 export const TagSelect: FC<{
   tags: Tag[];
