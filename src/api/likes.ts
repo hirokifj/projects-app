@@ -19,7 +19,7 @@ const likeConverter = {
 
     return {
       userId: data.userId,
-      items: data.list,
+      items: data.items,
     };
     /* eslint-enable */
   },
