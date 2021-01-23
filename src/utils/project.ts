@@ -1,3 +1,4 @@
+import { LikeList } from '@/types/like';
 import { Project, Tag } from '@/types/project';
 import { isString } from '@/utils/string';
 
@@ -10,3 +11,8 @@ export const getProjectJoinedTag = (
     .map((projectTagId) => tags.find((_) => _.id === projectTagId)?.label)
     .filter(isString),
 });
+
+export const isLikedProject = (
+  projectId: Project['id'],
+  items: LikeList['items'],
+): boolean => items.includes(projectId);
