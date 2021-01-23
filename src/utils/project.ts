@@ -1,5 +1,4 @@
-import { Project } from '@/types/project';
-import { Tag } from '@/types/tag';
+import { Project, Tag } from '@/types/project';
 import { isString } from '@/utils/string';
 
 export const getProjectJoinedTag = (
