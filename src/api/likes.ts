@@ -1,29 +1,7 @@
-import firebase, { db } from '@/lib/firebase';
-import { LikeList, LikeListWithoutId } from '@/types/like';
+import { db } from '@/lib/firebase';
+import { LikeList, LikeListWithoutId, likeConverter } from '@/types/like';
 import { User } from '@/types/user';
 import { Project, projectConverter } from '@/types/project';
-
-const likeConverter = {
-  toFirestore(like: LikeListWithoutId): firebase.firestore.DocumentData {
-    return {
-      userId: like.userId,
-      items: like.items,
-    };
-  },
-  fromFirestore(
-    snapshot: firebase.firestore.QueryDocumentSnapshot,
-    options: firebase.firestore.SnapshotOptions,
-  ): LikeListWithoutId {
-    /* eslint-disable @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call */
-    const data = snapshot.data(options)!;
-
-    return {
-      userId: data.userId,
-      items: data.items,
-    };
-    /* eslint-enable */
-  },
-};
 
 export const updateLikeList = ({
   likeList,
