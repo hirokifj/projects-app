@@ -2,6 +2,9 @@ import { db } from '@/lib/firebase';
 import { Project, FbProjectWithoutId, projectConverter } from '@/types/project';
 import { getProjectJoinedTag } from '@/utils/project';
 import { fetchAllTags } from '@/api/tags';
+import { take } from '@/utils/array';
+
+const take10 = take(10);
 
 export const fetchAllProjects = () => fetchProjects();
 
@@ -34,6 +37,37 @@ export const fetchProjects: (options?: {
       ),
     ),
   );
+};
+
+export const fetchRelatedTagsProjects = async (
+  project: Project,
+): Promise<Project[]> => {
+  const tags = await fetchAllTags();
+
+  return db()
+    .collection('projects')
+    .withConverter(projectConverter)
+    .orderBy('likesCount', 'desc')
+    .where(
+      'tags',
+      'array-contains-any',
+      take10(project.tags).map((tag) => tag.id),
+    )
+    .limit(10)
+    .get()
+    .then((res) =>
+      res.docs
+        .map((doc) =>
+          getProjectJoinedTag(
+            {
+              id: doc.id,
+              ...doc.data(),
+            },
+            tags,
+          ),
+        )
+        .filter((_) => _.id !== project.id),
+    );
 };
 
 export const fetchProjectById = async (
