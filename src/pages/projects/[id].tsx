@@ -68,8 +68,6 @@ const ProjectSingle: FC<Props> = ({ project, relatedProjects }) => {
     isLoadingLikesCount,
   } = useProjectDetail(project);
 
-  console.log(relatedProjects);
-
   const leftContent = (
     <Stack spacing={4}>
       <WhiteBgBox>
