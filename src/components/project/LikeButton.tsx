@@ -8,7 +8,7 @@ import { FaRegHeart, FaHeart } from 'react-icons/fa';
 interface Props {
   count: number;
   isLiked: boolean;
-  loading: boolean;
+  loading?: boolean;
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
   chakraButtonProps?: ButtonProps;
 }
