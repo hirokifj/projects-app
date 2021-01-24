@@ -1,5 +1,5 @@
 import { db } from '@/lib/firebase';
-import { Project, ProjectWithoutId, projectConverter } from '@/types/project';
+import { Project, FbProjectWithoutId, projectConverter } from '@/types/project';
 import { getProjectJoinedTag } from '@/utils/project';
 import { fetchAllTags } from '@/api/tags';
 
@@ -36,7 +36,9 @@ export const fetchProjects: (options?: {
   );
 };
 
-export const fetchProjectById = async (projectId: Project['id']) => {
+export const fetchProjectById = async (
+  projectId: Project['id'],
+): Promise<Project> => {
   const tags = await fetchAllTags();
 
   return db()
@@ -47,7 +49,7 @@ export const fetchProjectById = async (projectId: Project['id']) => {
     .then((res) => {
       if (!res.exists) throw new Error('Data is not found.');
 
-      const data = res.data() as ProjectWithoutId;
+      const data = res.data() as FbProjectWithoutId;
       return getProjectJoinedTag(
         {
           id: res.id,

@@ -7,7 +7,7 @@ export interface Project {
   commentsCount: number;
   likesCount: number;
   language: Language;
-  tags: string[];
+  tags: Tag[];
   url: string;
   imgPath: string;
 }
@@ -18,6 +18,20 @@ export type Tag = {
   id: string;
   label: string;
 };
+
+export interface FbProject {
+  id: string;
+  title: string;
+  description: string;
+  commentsCount: number;
+  likesCount: number;
+  language: Language;
+  tags: string[];
+  url: string;
+  imgPath: string;
+}
+
+export type FbProjectWithoutId = Omit<FbProject, 'id'>;
 
 export type TagWithoutId = Omit<Tag, 'id'>;
 
@@ -30,7 +44,7 @@ export const projectConverter = {
   fromFirestore(
     snapshot: firebase.firestore.QueryDocumentSnapshot,
     options: firebase.firestore.SnapshotOptions,
-  ): ProjectWithoutId {
+  ): FbProjectWithoutId {
     /* eslint-disable @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-unsafe-assignment */
     const data = snapshot.data(options)!;
 

@@ -1,15 +1,14 @@
 import { LikeList } from '@/types/like';
-import { Project, Tag } from '@/types/project';
-import { isString } from '@/utils/string';
+import { Project, FbProject, Tag } from '@/types/project';
 
 export const getProjectJoinedTag = (
-  project: Project,
+  project: FbProject,
   tags: Tag[],
 ): Project => ({
   ...project,
   tags: project.tags
-    .map((projectTagId) => tags.find((_) => _.id === projectTagId)?.label)
-    .filter(isString),
+    .map((tagId) => tags.find((_) => _.id === tagId))
+    .filter((_) => _ !== undefined) as Tag[],
 });
 
 export const isLikedProject = (

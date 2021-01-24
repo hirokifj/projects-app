@@ -44,8 +44,8 @@ export const ProjectDetailContent: FC<{
     <Box mt="4">
       <Wrap>
         {project.tags.map((tag) => (
-          <WrapItem key={tag}>
-            <Tag colorScheme="blue">{tag}</Tag>
+          <WrapItem key={tag.id}>
+            <Tag colorScheme="blue">{tag.label}</Tag>
           </WrapItem>
         ))}
         <WrapItem>

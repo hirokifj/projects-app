@@ -62,8 +62,8 @@ export const ProjectCard: FC<Project> = ({
             </Box>
             <Wrap>
               {tags.map((tag) => (
-                <WrapItem key={tag}>
-                  <Tag colorScheme="blue">{tag}</Tag>
+                <WrapItem key={tag.id}>
+                  <Tag colorScheme="blue">{tag.label}</Tag>
                 </WrapItem>
               ))}
               <WrapItem>
