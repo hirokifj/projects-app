@@ -1,23 +1,16 @@
 import { db } from '@/lib/firebase';
 import { Project, ProjectWithoutId, projectConverter } from '@/types/project';
+import { getProjectJoinedTag } from '@/utils/project';
+import { fetchAllTags } from '@/api/tags';
 
-export const fetchAllProjects = () =>
-  db()
-    .collection('projects')
-    .withConverter(projectConverter)
-    .orderBy('createdAt', 'desc')
-    .get()
-    .then((res) =>
-      res.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })),
-    );
+export const fetchAllProjects = () => fetchProjects();
 
 export const fetchProjects: (options?: {
   tag: string;
   language: string;
-}) => Promise<Project[]> = (options) => {
+}) => Promise<Project[]> = async (options) => {
+  const tags = await fetchAllTags();
+
   let query = db()
     .collection('projects')
     .withConverter(projectConverter)
@@ -31,15 +24,22 @@ export const fetchProjects: (options?: {
   }
 
   return query.get().then((res) =>
-    res.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    })),
+    res.docs.map((doc) =>
+      getProjectJoinedTag(
+        {
+          id: doc.id,
+          ...doc.data(),
+        },
+        tags,
+      ),
+    ),
   );
 };
 
-export const fetchProjectById = (projectId: Project['id']) =>
-  db()
+export const fetchProjectById = async (projectId: Project['id']) => {
+  const tags = await fetchAllTags();
+
+  return db()
     .collection('projects')
     .doc(projectId)
     .withConverter(projectConverter)
@@ -48,11 +48,15 @@ export const fetchProjectById = (projectId: Project['id']) =>
       if (!res.exists) throw new Error('Data is not found.');
 
       const data = res.data() as ProjectWithoutId;
-      return {
-        id: res.id,
-        ...data,
-      };
+      return getProjectJoinedTag(
+        {
+          id: res.id,
+          ...data,
+        },
+        tags,
+      );
     });
+};
 
 export const fetchProjectLikesCountById = async (projectId: Project['id']) =>
   (await fetchProjectById(projectId)).likesCount;
