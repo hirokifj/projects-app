@@ -7,6 +7,7 @@ export const useProjectComments = (projectId: Project['id']) => {
   const { data: comments, error } = useQuery(
     getCommentsFetcherKey(projectId),
     () => fetchProjectAllComments(projectId),
+    { enabled: !!projectId },
   );
 
   return {

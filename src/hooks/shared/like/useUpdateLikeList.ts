@@ -1,26 +1,27 @@
 import { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
-import {
-  fetchLikeListByUserId,
-  updateLikeList as FbUpdateLikeList,
-} from '@/api/likes';
+import { useMutation, useQueryClient } from 'react-query';
+import { updateLikeList as FbUpdateLikeList } from '@/api/likes';
 import { Project } from '@/types/project';
 import { User } from '@/types/user';
-import { getProjectsLikesCountFetcherKey } from '@/hooks/project/fetcherKey';
+import { getProjectsLikesCountFetcherKey } from '@/hooks/shared/project/fetcherKey';
+import { LikeList } from '@/types/like';
 import { getLikeListFetcherKey } from './fetcherKey';
 
-export const useLikeList = (userId: User['id']) => {
+export const useUpdateLikeList = ({
+  projectId,
+  likeList,
+  user,
+}: {
+  projectId: Project['id'];
+  likeList: LikeList | undefined;
+  user: User | null;
+}) => {
   const [processing, setProcessing] = useState(false);
-  const { data: likeList, error } = useQuery(
-    getLikeListFetcherKey(),
-    () => fetchLikeListByUserId(userId),
-    { enabled: !!userId },
-  );
   const mutation = useMutation(FbUpdateLikeList);
   const queryClient = useQueryClient();
 
-  const updateLikeList = (projectId: Project['id']) => {
-    if (processing || !likeList) return;
+  const updateLikeList = () => {
+    if (processing || !likeList || !user) return;
     setProcessing(true);
 
     mutation
@@ -41,8 +42,6 @@ export const useLikeList = (userId: User['id']) => {
   };
 
   return {
-    likeList,
-    error,
     updateLikeList,
     processing,
   } as const;

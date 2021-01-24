@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Button, Stack } from '@chakra-ui/react';
 import { InputControl } from '@/components/core/InputControl';
-import { useFirebaseEmailSignUp } from '@/hooks/useFirebaseEmailSignUp';
+import { useFirebaseEmailSignUp } from '@/hooks/pages/auth/useFirebaseEmailSignUp';
 
 export const SignUpForm: FC = () => {
   const {

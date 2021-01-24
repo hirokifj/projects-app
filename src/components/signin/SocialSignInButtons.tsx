@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useSocialSignIn } from '@/hooks/useSocialSignIn';
+import { useSocialSignIn } from '@/hooks/pages/auth/useSocialSignIn';
 import { Button, Stack, Icon } from '@chakra-ui/react';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 

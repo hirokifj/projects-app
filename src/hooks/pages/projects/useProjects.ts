@@ -1,32 +1,22 @@
 import { useState, useMemo } from 'react';
 import { useQuery } from 'react-query';
-import { useProjectTags } from '@/hooks/project/useProjectTags';
+import { useTags } from '@/hooks/shared/project/useTags';
 import { fetchProjects } from '@/api/projects';
 import { Tag, Language } from '@/types/project';
-import { getProjectJoinedTag } from '@/utils/project';
-import { getProjectsFetcherKey } from './fetcherKey';
+import { getProjectsFetcherKey } from '@/hooks/shared/project/fetcherKey';
 
 export const useProjects = () => {
-  const { tags: tagsData, error: tagsError } = useProjectTags();
+  const { tags: tagsData, error: tagsError } = useTags();
   const [selectedTagId, setSelectedTagId] = useState<Tag['id']>('');
   const [selectedLanguage, setSelectedLanguage] = useState<Language | ''>('');
 
   const {
-    data: projectsData,
+    data: projects,
     error: projectsError,
   } = useQuery(
     getProjectsFetcherKey({ tag: selectedTagId, language: selectedLanguage }),
     () => fetchProjects({ tag: selectedTagId, language: selectedLanguage }),
   );
-
-  const projects = useMemo(() => {
-    if (projectsData && tagsData) {
-      return projectsData.map((project) =>
-        getProjectJoinedTag(project, tagsData),
-      );
-    }
-    return undefined;
-  }, [projectsData, tagsData]);
 
   const error = useMemo<unknown>(() => projectsError || tagsError, [
     projectsError,
