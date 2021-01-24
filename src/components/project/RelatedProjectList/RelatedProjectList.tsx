@@ -20,7 +20,7 @@ export const RelatedProjectList: FC<Prop> = ({ projects }) => (
   <Stack spacing={2}>
     {projects.map((project, index) => (
       <Box>
-        <NextLink href={`${project.id}`} passHref>
+        <NextLink href={`/projects/${project.id}`} passHref>
           <Box
             as="a"
             key={project.id}
