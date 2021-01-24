@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { useAuth } from '@/lib/auth';
 import { Flex, Stack, StackDivider, Heading, Center } from '@chakra-ui/react';
-import SocialSignInButtons from '@/components/organism/SocialSignInButtons';
-import SocialSignInPageLinks from '@/components/organism/SocialSignInPageLinks';
+import { SocialSignInButtons } from '@/components/signin/SocialSignInButtons';
+import { SocialSignInPageLinks } from '@/components/signin/SocialSignInPageLinks';
 
 const Login: FC = () => {
   const { redirectIfAuthorized } = useAuth();

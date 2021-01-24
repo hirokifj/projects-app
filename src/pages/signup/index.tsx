@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { useAuth } from '@/lib/auth';
 import { Flex, Stack, StackDivider, Heading, Center } from '@chakra-ui/react';
-import SignUpForm from '@/components/organism/SignUpForm';
-import SignUpPageLinks from '@/components/organism/SignUpPageLinks';
+import { SignUpForm } from '@/components/signup/SignUpForm';
+import { SignUpPageLinks } from '@/components/signup/SignUpPageLinks';
 
 const SignUp: FC = () => {
   const { redirectIfAuthorized } = useAuth();
