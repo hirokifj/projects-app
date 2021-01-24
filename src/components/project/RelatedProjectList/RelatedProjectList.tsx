@@ -19,11 +19,10 @@ interface Prop {
 export const RelatedProjectList: FC<Prop> = ({ projects }) => (
   <Stack spacing={2}>
     {projects.map((project, index) => (
-      <Box>
+      <Box key={project.id}>
         <NextLink href={`/projects/${project.id}`} passHref>
           <Box
             as="a"
-            key={project.id}
             display="block"
             padding="4px"
             transition="background-color .4s"
