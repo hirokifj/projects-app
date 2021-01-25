@@ -3,6 +3,7 @@ import { Project, FbProjectWithoutId, projectConverter } from '@/types/project';
 import { getProjectJoinedTag } from '@/utils/project';
 import { fetchAllTags } from '@/api/tags';
 import { take } from '@/utils/array';
+import { LikeList } from '@/types/like';
 
 const take10 = take(10);
 
@@ -96,3 +97,9 @@ export const fetchProjectById = async (
 
 export const fetchProjectLikesCountById = async (projectId: Project['id']) =>
   (await fetchProjectById(projectId)).likesCount;
+
+export const fetchUserLikedProjects = (likeList: LikeList) => {
+  const promises = likeList.items.map(fetchProjectById);
+
+  return Promise.all(promises);
+};
