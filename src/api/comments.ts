@@ -16,6 +16,7 @@ export const createComment = (data: CommentWithoutId) => {
     userName: data.userName,
     userImgPath: data.userImgPath,
     projectId: data.projectId,
+    projectTitle: data.projectTitle,
     body: data.body,
     createdAt: data.createdAt,
     updatedAt: data.updatedAt,

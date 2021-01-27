@@ -10,10 +10,10 @@ export interface CommentFormValue {
 
 export const usePostComment = ({
   user,
-  projectId,
+  project,
 }: {
   user: User | null;
-  projectId: Project['id'];
+  project: Project;
 }) => {
   const mutation = useMutation(createComment);
   const queryClient = useQueryClient();
@@ -25,7 +25,8 @@ export const usePostComment = ({
       userId: user.id,
       userName: user.name,
       userImgPath: user.imgPath,
-      projectId,
+      projectId: project.id,
+      projectTitle: project.title,
       body: comment,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -33,7 +34,7 @@ export const usePostComment = ({
 
     // eslint-disable-next-line consistent-return
     return mutation.mutateAsync(newComment).then(() => {
-      queryClient.invalidateQueries(getCommentsFetcherKey(projectId));
+      queryClient.invalidateQueries(getCommentsFetcherKey(project.id));
     });
   };
   return {

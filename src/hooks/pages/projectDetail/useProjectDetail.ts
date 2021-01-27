@@ -13,7 +13,7 @@ export const useProjectDetail = (project: Project) => {
   const { isAuthorized, isUnAuthorized, user } = useAuth();
 
   const { comments, error: commentsError } = useProjectComments(project.id);
-  const { postComment } = usePostComment({ user, projectId: project.id });
+  const { postComment } = usePostComment({ user, project });
 
   const { likeList } = useLikeList(user);
 

@@ -8,6 +8,7 @@ export interface Comment {
   userName: string;
   userImgPath: string;
   projectId: Project['id'];
+  projectTitle: Project['title'];
   body: string;
   createdAt: Date;
   updatedAt: Date;
@@ -22,6 +23,7 @@ export const commentConverter = {
       userName: comment.userName,
       userImgPath: comment.userImgPath,
       projectId: comment.projectId,
+      projectTitle: comment.projectTitle,
       body: comment.body,
       createdAt: comment.createdAt,
       updatedAt: comment.updatedAt,
@@ -39,6 +41,7 @@ export const commentConverter = {
       userName: data.userName,
       userImgPath: data.userImgPath,
       projectId: data.projectId,
+      projectTitle: data.projectTitle,
       body: data.body,
       createdAt: data.createdAt.toDate(),
       updatedAt: data.updatedAt.toDate(),
