@@ -14,8 +14,8 @@ export const useProjects = () => {
     data: projects,
     error: projectsError,
   } = useQuery(
-    getProjectsFetcherKey({ tag: selectedTagId, language: selectedLanguage }),
-    () => fetchProjects({ tag: selectedTagId, language: selectedLanguage }),
+    getProjectsFetcherKey({ tagId: selectedTagId, language: selectedLanguage }),
+    () => fetchProjects({ tagId: selectedTagId, language: selectedLanguage }),
   );
 
   const error = useMemo<unknown>(() => projectsError || tagsError, [

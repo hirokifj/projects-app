@@ -5,7 +5,7 @@ import { Tag } from '@/types/project';
 
 export const TagSelect: FC<{
   tags: Tag[];
-  onSelect: (targetId: Tag['id']) => void;
+  onSelect: (tagId: Tag['id']) => void;
 }> = ({ tags, onSelect }) => {
   const options: Option[] = tags.map((tag) => ({
     label: tag.label,

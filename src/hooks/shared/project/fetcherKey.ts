@@ -3,9 +3,9 @@ import { Project, Tag, Language } from '@/types/project';
 const projectBaseKey = 'projects/';
 
 export const getProjectsFetcherKey = (options: {
-  tag: Tag['id'];
+  tagId: Tag['id'];
   language: Language | '';
-}) => [projectBaseKey, options.tag, options.language];
+}) => [projectBaseKey, options.tagId, options.language];
 
 export const getProjectsLikesCountFetcherKey = (projectId: Project['id']) => [
   `${projectBaseKey}/like`,

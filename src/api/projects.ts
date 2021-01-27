@@ -10,7 +10,7 @@ const take10 = take(10);
 export const fetchAllProjects = () => fetchProjects();
 
 export const fetchProjects: (options?: {
-  tag: string;
+  tagId: string;
   language: string;
 }) => Promise<Project[]> = async (options) => {
   const tags = await fetchAllTags();
@@ -20,8 +20,8 @@ export const fetchProjects: (options?: {
     .withConverter(projectConverter)
     .orderBy('createdAt', 'desc');
 
-  if (options?.tag) {
-    query = query.where('tagIds', 'array-contains', options.tag);
+  if (options?.tagId) {
+    query = query.where('tagIds', 'array-contains', options.tagId);
   }
   if (options?.language) {
     query = query.where('language', '==', options.language);
