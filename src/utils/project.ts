@@ -6,7 +6,7 @@ export const getProjectJoinedTag = (
   tags: Tag[],
 ): Project => ({
   ...project,
-  tags: project.tags
+  tags: project.tagIds
     .map((tagId) => tags.find((_) => _.id === tagId))
     .filter((_) => _ !== undefined) as Tag[],
 });

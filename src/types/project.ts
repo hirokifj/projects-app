@@ -26,7 +26,7 @@ export interface FbProject {
   commentsCount: number;
   likesCount: number;
   language: Language;
-  tags: string[];
+  tagIds: string[];
   url: string;
   imgPath: string;
 }
@@ -54,7 +54,7 @@ export const projectConverter = {
       commentsCount: data.commentsCount,
       likesCount: data.likesCount,
       language: data.language,
-      tags: data.tags,
+      tagIds: data.tagIds,
       url: data.url,
       imgPath: data.imgPath,
     };

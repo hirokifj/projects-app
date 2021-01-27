@@ -21,7 +21,7 @@ export const fetchProjects: (options?: {
     .orderBy('createdAt', 'desc');
 
   if (options?.tag) {
-    query = query.where('tags', 'array-contains', options.tag);
+    query = query.where('tagIds', 'array-contains', options.tag);
   }
   if (options?.language) {
     query = query.where('language', '==', options.language);
@@ -50,7 +50,7 @@ export const fetchRelatedTagsProjects = async (
     .withConverter(projectConverter)
     .orderBy('likesCount', 'desc')
     .where(
-      'tags',
+      'tagIds',
       'array-contains-any',
       take10(project.tags).map((tag) => tag.id),
     )
