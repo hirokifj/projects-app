@@ -77,3 +77,6 @@ export const updateComment = ({
       body: commentBody,
       updatedAt: new Date(),
     });
+
+export const deleteComment = (commentId: Comment['id']) =>
+  db().collection('comments').doc(commentId).delete();
