@@ -50,5 +50,5 @@ export const useDashboard = () => {
     comments,
     commentsError,
     updateComment,
-  };
+  } as const;
 };
