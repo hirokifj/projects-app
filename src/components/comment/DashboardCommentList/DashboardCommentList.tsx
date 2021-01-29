@@ -1,10 +1,19 @@
 import { FC } from 'react';
 import NextLink from 'next/link';
 import { Flex, Stack, Text, Button, Box } from '@chakra-ui/react';
+import { CommentEditModal } from '@/components/comment/CommentEditModal';
 import { Comment } from '@/types/comment';
 
-export const DashboardCommentList: FC<{ comments: Comment[] }> = ({
+interface Prop {
+  comments: Comment[];
+  onUpdateComment: (
+    commentId: Comment['id'],
+  ) => (commentBody: Comment['body']) => Promise<void>;
+}
+
+export const DashboardCommentList: FC<Prop> = ({
   comments,
+  onUpdateComment,
 }) => (
   <Stack spacing="4">
     {comments.map((comment) => (
@@ -37,9 +46,12 @@ export const DashboardCommentList: FC<{ comments: Comment[] }> = ({
           </Text>
         </Box>
         <Flex>
-          <Button mr="4" colorScheme="green" size="sm">
-            編集
-          </Button>
+          <Box mr="4">
+            <CommentEditModal
+              commentBody={comment.body}
+              onSubmit={onUpdateComment(comment.id)}
+            />
+          </Box>
           <Button colorScheme="red" size="sm">
             削除
           </Button>
