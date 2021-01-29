@@ -1,13 +1,23 @@
 import { useAuth } from '@/lib/auth';
-import { useQuery } from 'react-query';
+import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { useLikeList } from '@/hooks/shared/like/useLikeList';
 import { fetchUserLikedProjects } from '@/api/projects';
-import { fetchUserComments } from '@/api/comments';
+import {
+  fetchUserComments,
+  updateComment as FbUpdateComment,
+} from '@/api/comments';
+import { Comment } from '@/types/comment';
 import { LikeList } from '@/types/like';
+
+type UpdateComment = (
+  commentId: Comment['id'],
+) => (commentBody: Comment['body']) => Promise<void>;
 
 export const useDashboard = () => {
   const { redirectIfUnAuthorized, isAuthorized, user } = useAuth();
   const { likeList } = useLikeList(user);
+  const mutation = useMutation(FbUpdateComment);
+  const queryClient = useQueryClient();
 
   const {
     data: likedProjects,
@@ -24,6 +34,13 @@ export const useDashboard = () => {
     { enabled: !!user },
   );
 
+  const updateComment: UpdateComment = (commentId: Comment['id']) => (
+    commentBody: Comment['body'],
+  ) =>
+    mutation.mutateAsync({ commentId, commentBody }).then(() => {
+      queryClient.invalidateQueries('user/comments');
+    });
+
   return {
     user,
     isAuthorized,
@@ -32,5 +49,6 @@ export const useDashboard = () => {
     likedProjectsError,
     comments,
     commentsError,
+    updateComment,
   };
 };
