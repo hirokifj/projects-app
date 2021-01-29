@@ -1,5 +1,5 @@
 import { db } from '@/lib/firebase';
-import { CommentWithoutId, commentConverter } from '@/types/comment';
+import { Comment, CommentWithoutId, commentConverter } from '@/types/comment';
 import { Project, projectConverter } from '@/types/project';
 import { User } from '@/types/user';
 
@@ -61,3 +61,19 @@ export const fetchUserComments = (userId: User['id']) =>
         ...doc.data(),
       })),
     );
+
+export const updateComment = ({
+  commentId,
+  commentBody,
+}: {
+  commentId: Comment['id'];
+  commentBody: Comment['body'];
+}) =>
+  db()
+    .collection('comments')
+    .withConverter(commentConverter)
+    .doc(commentId)
+    .update({
+      body: commentBody,
+      updatedAt: new Date(),
+    });
