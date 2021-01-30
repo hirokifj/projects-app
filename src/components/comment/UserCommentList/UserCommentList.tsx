@@ -13,7 +13,7 @@ interface Prop {
   onDeleteComment: (commentId: Comment['id']) => Promise<void>;
 }
 
-export const DashboardCommentList: FC<Prop> = ({
+export const UserCommentList: FC<Prop> = ({
   comments,
   onUpdateComment,
   onDeleteComment,

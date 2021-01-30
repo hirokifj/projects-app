@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Flex, Stack, SkeletonText, Skeleton } from '@chakra-ui/react';
 
-export const SkeletonDashboardCommentList: FC = () => (
+export const SkeletonUserCommentList: FC = () => (
   <Stack spacing="4">
     <Flex
       alignItems="center"
