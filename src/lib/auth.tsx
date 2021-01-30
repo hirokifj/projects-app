@@ -1,5 +1,5 @@
 import { FC, useState, useEffect, useContext, createContext } from 'react';
-import firebase from '@/lib/firebase';
+import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/router';
 import { User } from '@/types/user';
 
@@ -14,19 +14,19 @@ const useProvideAuth = () => {
   const isUnAuthorized = authState === 'UnAuthorized';
 
   const signInWithGoogle = () =>
-    firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    auth().signInWithPopup(new auth.GoogleAuthProvider());
 
   const signInWithGithub = () =>
-    firebase.auth().signInWithPopup(new firebase.auth.GithubAuthProvider());
+    auth().signInWithPopup(new auth.GithubAuthProvider());
 
   const signInWithEmail = (email: string, password: string) =>
-    firebase.auth().signInWithEmailAndPassword(email, password);
+    auth().signInWithEmailAndPassword(email, password);
 
   const signUpWithEmail = (email: string, password: string) =>
-    firebase.auth().createUserWithEmailAndPassword(email, password);
+    auth().createUserWithEmailAndPassword(email, password);
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged((currentUser) => {
+    const unsubscribe = auth().onAuthStateChanged((currentUser) => {
       if (currentUser) {
         setUser({
           id: currentUser.uid,
@@ -74,8 +74,10 @@ const AuthContext = createContext<ReturnType<typeof useProvideAuth> | null>(
 );
 
 export const AuthProvider: FC = ({ children }) => {
-  const auth = useProvideAuth();
-  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
+  const authModule = useProvideAuth();
+  return (
+    <AuthContext.Provider value={authModule}>{children}</AuthContext.Provider>
+  );
 };
 
 export const useAuth = () =>
