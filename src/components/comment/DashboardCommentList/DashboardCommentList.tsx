@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import NextLink from 'next/link';
-import { Flex, Stack, Text, Button, Box } from '@chakra-ui/react';
+import { Flex, Stack, Text, Box } from '@chakra-ui/react';
 import { CommentEditModal } from '@/components/comment/CommentEditModal';
+import { AlertDialogButton } from '@/components/core/AlertDialogButton/index';
 import { Comment } from '@/types/comment';
 
 interface Prop {
@@ -9,11 +10,13 @@ interface Prop {
   onUpdateComment: (
     commentId: Comment['id'],
   ) => (commentBody: Comment['body']) => Promise<void>;
+  onDeleteComment: (commentId: Comment['id']) => Promise<void>;
 }
 
 export const DashboardCommentList: FC<Prop> = ({
   comments,
   onUpdateComment,
+  onDeleteComment,
 }) => (
   <Stack spacing="4">
     {comments.map((comment) => (
@@ -52,9 +55,19 @@ export const DashboardCommentList: FC<Prop> = ({
               onSubmit={onUpdateComment(comment.id)}
             />
           </Box>
-          <Button colorScheme="red" size="sm">
-            削除
-          </Button>
+          <Box>
+            <AlertDialogButton
+              buttonText="削除"
+              acitonTexts={{ execute: '削除', close: 'キャンセル' }}
+              headerText=""
+              buttonSize="sm"
+              onExecuteButtonClick={() => {
+                onDeleteComment(comment.id);
+              }}
+            >
+              <Text>コメントを削除してもよろしいですか？</Text>
+            </AlertDialogButton>
+          </Box>
         </Flex>
       </Flex>
     ))}

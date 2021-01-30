@@ -5,6 +5,7 @@ import { fetchUserLikedProjects } from '@/api/projects';
 import {
   fetchUserComments,
   updateComment as FbUpdateComment,
+  deleteComment as FbDeleteComment,
 } from '@/api/comments';
 import { Comment } from '@/types/comment';
 import { LikeList } from '@/types/like';
@@ -16,7 +17,8 @@ type UpdateComment = (
 export const useDashboard = () => {
   const { redirectIfUnAuthorized, isAuthorized, user } = useAuth();
   const { likeList } = useLikeList(user);
-  const mutation = useMutation(FbUpdateComment);
+  const updateMutation = useMutation(FbUpdateComment);
+  const deleteMutation = useMutation(FbDeleteComment);
   const queryClient = useQueryClient();
 
   const {
@@ -37,7 +39,12 @@ export const useDashboard = () => {
   const updateComment: UpdateComment = (commentId: Comment['id']) => (
     commentBody: Comment['body'],
   ) =>
-    mutation.mutateAsync({ commentId, commentBody }).then(() => {
+    updateMutation.mutateAsync({ commentId, commentBody }).then(() => {
+      queryClient.invalidateQueries('user/comments');
+    });
+
+  const deleteComment = (commentId: Comment['id']): Promise<void> =>
+    deleteMutation.mutateAsync(commentId).then(() => {
       queryClient.invalidateQueries('user/comments');
     });
 
@@ -50,5 +57,6 @@ export const useDashboard = () => {
     comments,
     commentsError,
     updateComment,
+    deleteComment,
   } as const;
 };
