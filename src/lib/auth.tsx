@@ -25,6 +25,10 @@ const useProvideAuth = () => {
   const signUpWithEmail = (email: string, password: string) =>
     auth().createUserWithEmailAndPassword(email, password);
 
+  const updateAuthUser = (newUserData: User) => {
+    setUser(newUserData);
+  };
+
   useEffect(() => {
     const unsubscribe = auth().onAuthStateChanged((currentUser) => {
       if (currentUser) {
@@ -57,6 +61,7 @@ const useProvideAuth = () => {
 
   return {
     user,
+    updateAuthUser,
     authState,
     isAuthorized,
     isUnAuthorized,
