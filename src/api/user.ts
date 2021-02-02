@@ -11,6 +11,22 @@ const getCurrentUser: () => firebase.User = () => {
   return currentUser;
 };
 
+export const updateUserImg = async (userImg: File) => {
+  const fileName = getHash(userImg.name + getCurrentUnixtime.toString());
+
+  const storageRef = storage().ref().child(`images/${fileName}`);
+
+  await storageRef.put(userImg);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const newImgPath = await storageRef.getDownloadURL();
+
+  if (isString(newImgPath)) {
+    await getCurrentUser().updateProfile({
+      photoURL: newImgPath,
+    });
+  }
+};
+
 interface updatedResult {
   readonly isUpdated: true;
   readonly newUserData: User;
