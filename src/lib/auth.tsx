@@ -25,8 +25,16 @@ const useProvideAuth = () => {
   const signUpWithEmail = (email: string, password: string) =>
     auth().createUserWithEmailAndPassword(email, password);
 
-  const updateAuthUser = (newUserData: User) => {
-    setUser(newUserData);
+  const refreshUser = () => {
+    const { currentUser } = auth();
+
+    if (currentUser) {
+      setUser({
+        id: currentUser.uid,
+        name: currentUser.displayName ?? '',
+        imgPath: currentUser.photoURL ?? '',
+      });
+    }
   };
 
   useEffect(() => {
@@ -61,7 +69,7 @@ const useProvideAuth = () => {
 
   return {
     user,
-    updateAuthUser,
+    refreshUser,
     authState,
     isAuthorized,
     isUnAuthorized,
