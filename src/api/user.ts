@@ -11,6 +11,11 @@ const getCurrentUser: () => firebase.User = () => {
   return currentUser;
 };
 
+export const updateUserName = (userName: string) =>
+  getCurrentUser().updateProfile({
+    displayName: userName,
+  });
+
 export const updateUserImg = async (userImg: File) => {
   const fileName = getHash(userImg.name + getCurrentUnixtime.toString());
 
