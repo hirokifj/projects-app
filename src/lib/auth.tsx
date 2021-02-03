@@ -33,6 +33,7 @@ const useProvideAuth = () => {
         id: currentUser.uid,
         name: currentUser.displayName ?? '',
         imgPath: currentUser.photoURL ?? '',
+        provider: currentUser.providerData[0]?.providerId ?? '',
       });
     }
   };
@@ -44,6 +45,7 @@ const useProvideAuth = () => {
           id: currentUser.uid,
           name: currentUser.displayName ?? '',
           imgPath: currentUser.photoURL ?? '',
+          provider: currentUser.providerData[0]?.providerId ?? '',
         });
         setAuthState('Authorized');
       } else {
