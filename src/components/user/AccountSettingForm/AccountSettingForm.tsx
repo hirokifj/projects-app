@@ -10,12 +10,12 @@ import {
 
 export const AccountSettingsForm: FC<{
   userData: User;
-  onSubmit: (data: AccountSettingsFormValue) => Promise<void>;
-}> = ({ userData, onSubmit }) => {
+  onSubmit: (data: AccountSettingsFormValue) => void;
+  processing: boolean;
+}> = ({ userData, onSubmit, processing }) => {
   const {
     handleSubmit,
     handleImgInputReset,
-    processing,
     RHFRegister,
     userNameRules,
     userNameErrMsg,

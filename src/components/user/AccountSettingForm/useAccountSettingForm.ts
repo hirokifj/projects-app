@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { User } from '@/types/user';
 import { useForm } from 'react-hook-form';
 
@@ -8,7 +7,7 @@ export interface AccountSettingsFormValue {
 }
 
 export const useAccountSettingForm = (
-  onSubmit: (data: AccountSettingsFormValue) => Promise<void>,
+  onSubmit: (data: AccountSettingsFormValue) => void,
   initialValue: {
     userName: User['name'];
   },
@@ -25,21 +24,13 @@ export const useAccountSettingForm = (
       userName: initialValue.userName,
     },
   });
-  const [processing, setProcessing] = useState(false);
 
   const userNameRules = {
     required: 'ユーザーネームを入力してください。',
   };
   const userNameErrMsg = errors?.userName?.message;
 
-  const handleSubmit = RHFhandleSubmit((data: AccountSettingsFormValue) => {
-    if (processing) return;
-    setProcessing(true);
-
-    onSubmit(data).finally(() => {
-      setProcessing(false);
-    });
-  });
+  const handleSubmit = RHFhandleSubmit(onSubmit);
 
   const handleImgInputReset = () => {
     setValue('userImg', undefined);
@@ -48,7 +39,6 @@ export const useAccountSettingForm = (
   return {
     handleSubmit,
     handleImgInputReset,
-    processing,
     RHFRegister,
     userNameRules,
     userNameErrMsg,

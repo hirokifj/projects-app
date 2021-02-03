@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useToast } from '@chakra-ui/react';
 import { useAuth } from '@/lib/auth';
 import { updateUserName, updateUserImg } from '@/api/user';
@@ -6,13 +7,17 @@ import { useRouter } from 'next/router';
 
 export const useAccountSettings = () => {
   const { refreshUser, redirectIfUnAuthorized, user } = useAuth();
+  const [processing, setProcessing] = useState(false);
   const toast = useToast();
   const router = useRouter();
 
   const updateUser = ({
     userName,
     userImg,
-  }: AccountSettingsFormValue): Promise<void> => {
+  }: AccountSettingsFormValue): void => {
+    if (processing) return;
+    setProcessing(true);
+
     const promises = [];
 
     if (user && userName !== user.name) {
@@ -23,7 +28,7 @@ export const useAccountSettings = () => {
     }
 
     if (promises.length > 0) {
-      return Promise.all(promises)
+      Promise.all(promises)
         .then(() => {
           refreshUser();
           router.push('/account');
@@ -44,14 +49,19 @@ export const useAccountSettings = () => {
             duration: 5000,
             isClosable: true,
           });
+        })
+        .finally(() => {
+          setProcessing(false);
         });
+    } else {
+      setProcessing(false);
     }
-    return Promise.resolve();
   };
 
   return {
     user,
     redirectIfUnAuthorized,
     updateUser,
+    processing,
   } as const;
 };

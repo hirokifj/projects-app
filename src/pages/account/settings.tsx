@@ -8,7 +8,12 @@ import {
 } from '@/components/user/AccountSettingForm';
 
 const AccountSettings: FC = () => {
-  const { user, redirectIfUnAuthorized, updateUser } = useAccountSettings();
+  const {
+    user,
+    redirectIfUnAuthorized,
+    updateUser,
+    processing,
+  } = useAccountSettings();
   redirectIfUnAuthorized();
 
   return (
@@ -28,7 +33,11 @@ const AccountSettings: FC = () => {
           {!user ? (
             <SkeletonAccountSettingForm />
           ) : (
-            <AccountSettingsForm userData={user} onSubmit={updateUser} />
+            <AccountSettingsForm
+              userData={user}
+              onSubmit={updateUser}
+              processing={processing}
+            />
           )}
         </Box>
       </WhiteBgBox>
