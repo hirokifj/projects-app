@@ -1,7 +1,7 @@
 import { FC, useState, useEffect, useContext, createContext } from 'react';
 import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/router';
-import { User } from '@/types/user';
+import { User, toUser } from '@/types/user';
 
 type AuthState = 'Loading' | 'Authorized' | 'UnAuthorized';
 
@@ -29,24 +29,14 @@ const useProvideAuth = () => {
     const { currentUser } = auth();
 
     if (currentUser) {
-      setUser({
-        id: currentUser.uid,
-        name: currentUser.displayName ?? '',
-        imgPath: currentUser.photoURL ?? '',
-        provider: currentUser.providerData[0]?.providerId ?? '',
-      });
+      setUser(toUser(currentUser));
     }
   };
 
   useEffect(() => {
     const unsubscribe = auth().onAuthStateChanged((currentUser) => {
       if (currentUser) {
-        setUser({
-          id: currentUser.uid,
-          name: currentUser.displayName ?? '',
-          imgPath: currentUser.photoURL ?? '',
-          provider: currentUser.providerData[0]?.providerId ?? '',
-        });
+        setUser(toUser(currentUser));
         setAuthState('Authorized');
       } else {
         setUser(null);
