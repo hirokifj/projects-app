@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useToast } from '@chakra-ui/react';
 import { useAuth } from '@/lib/auth';
 import { updateUserName, updateUserImg } from '@/api/user';
@@ -7,17 +6,14 @@ import { useRouter } from 'next/router';
 
 export const useAccountSettings = () => {
   const { refreshUser, redirectIfUnAuthorized, user } = useAuth();
-  const [processing, setProcessing] = useState(false);
   const toast = useToast();
   const router = useRouter();
 
   const updateUser = ({
     userName,
     userImg,
-  }: AccountSettingsFormValue): void => {
-    if (processing) return;
-    setProcessing(true);
-
+  }: // eslint-disable-next-line consistent-return
+  AccountSettingsFormValue): Promise<void> | undefined => {
     const promises = [];
 
     if (user && userName !== user.name) {
@@ -28,7 +24,7 @@ export const useAccountSettings = () => {
     }
 
     if (promises.length > 0) {
-      Promise.all(promises)
+      return Promise.all(promises)
         .then(() => {
           refreshUser();
           router.push('/account');
@@ -49,12 +45,7 @@ export const useAccountSettings = () => {
             duration: 5000,
             isClosable: true,
           });
-        })
-        .finally(() => {
-          setProcessing(false);
         });
-    } else {
-      setProcessing(false);
     }
   };
 
@@ -62,6 +53,5 @@ export const useAccountSettings = () => {
     user,
     redirectIfUnAuthorized,
     updateUser,
-    processing,
   } as const;
 };

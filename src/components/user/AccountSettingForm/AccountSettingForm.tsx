@@ -10,7 +10,7 @@ import {
 
 export const AccountSettingsForm: FC<{
   userData: User;
-  onSubmit: (data: AccountSettingsFormValue) => void;
+  onSubmit: (data: AccountSettingsFormValue) => Promise<void> | undefined;
   processing: boolean;
 }> = ({ userData, onSubmit, processing }) => {
   const {
