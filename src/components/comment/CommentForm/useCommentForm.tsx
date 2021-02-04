@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useToast } from '@chakra-ui/react';
 
 export interface CommentFormValue {
   readonly comment: string;
@@ -9,7 +8,6 @@ export interface CommentFormValue {
 export const useCommentForm = (
   onSubmit: (comment: string) => Promise<void> | undefined,
 ) => {
-  const toast = useToast();
   // react-hook-form v7で修正予定。
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const {
@@ -32,24 +30,10 @@ export const useCommentForm = (
     try {
       await onSubmit(comment);
 
-      toast({
-        title: '',
-        description: '投稿しました。',
-        status: 'success',
-        duration: 2000,
-        isClosable: true,
-      });
       reset();
-    } catch (error) {
-      toast({
-        title: 'エラー',
-        description: '時間をおいて、再度お試しください。',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      });
+    } finally {
+      setProcessing(false);
     }
-    setProcessing(false);
   });
 
   return {
