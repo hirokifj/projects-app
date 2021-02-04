@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useToast, useDisclosure } from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/react';
 
 import { Comment } from '@/types/comment';
 
@@ -16,7 +16,6 @@ export const useCommentEditModal = ({
   onSubmit: (commentBody: string) => Promise<void>;
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const toast = useToast();
   // react-hook-form v7で修正予定。
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const {
@@ -43,25 +42,11 @@ export const useCommentEditModal = ({
     try {
       await onSubmit(comment);
 
-      toast({
-        title: '',
-        description: '編集が完了しました。',
-        status: 'success',
-        duration: 2000,
-        isClosable: true,
-      });
       reset({ comment });
       onClose();
-    } catch (error) {
-      toast({
-        title: 'エラー',
-        description: '時間をおいて、再度お試しください。',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      });
+    } finally {
+      setProcessing(false);
     }
-    setProcessing(false);
   });
 
   return {

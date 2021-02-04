@@ -1,3 +1,4 @@
+import { useToast } from '@chakra-ui/react';
 import { useAuth } from '@/lib/auth';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 import {
@@ -16,6 +17,7 @@ export const useDashboardComments = () => {
   const updateMutation = useMutation(FbUpdateComment);
   const deleteMutation = useMutation(FbDeleteComment);
   const queryClient = useQueryClient();
+  const toast = useToast();
 
   const { data: comments, error: commentsError } = useQuery(
     'user/comments',
@@ -26,9 +28,28 @@ export const useDashboardComments = () => {
   const updateComment: UpdateComment = (commentId: Comment['id']) => (
     commentBody: Comment['body'],
   ) =>
-    updateMutation.mutateAsync({ commentId, commentBody }).then(() => {
-      queryClient.invalidateQueries('user/comments');
-    });
+    updateMutation
+      .mutateAsync({ commentId, commentBody })
+      .then(() => {
+        queryClient.invalidateQueries('user/comments');
+
+        toast({
+          title: '',
+          description: '編集が完了しました。',
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+        });
+      })
+      .catch(() => {
+        toast({
+          title: 'エラー',
+          description: '時間をおいて、再度お試しください。',
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+        });
+      });
 
   const deleteComment = (commentId: Comment['id']): Promise<void> =>
     deleteMutation.mutateAsync(commentId).then(() => {
