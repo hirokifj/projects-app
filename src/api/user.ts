@@ -30,3 +30,11 @@ export const updateUserImg = async (userImg: File) => {
     });
   }
 };
+
+export const fetchUserEmail = (): string | null => {
+  try {
+    return getCurrentUser().email;
+  } catch (err) {
+    return null;
+  }
+};
