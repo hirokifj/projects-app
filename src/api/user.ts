@@ -38,3 +38,19 @@ export const fetchUserEmail = (): string | null => {
     return null;
   }
 };
+export const updateUserEmail = (
+  newEmail: string,
+  password: string,
+): Promise<void> =>
+  reAuthEmailUser(password).then(() => getCurrentUser().updateEmail(newEmail));
+
+const reAuthEmailUser = (
+  currentPass: string,
+): Promise<firebase.auth.UserCredential> => {
+  const user = getCurrentUser();
+  if (!user.email) throw new Error('invalid user');
+
+  const credential = auth.EmailAuthProvider.credential(user.email, currentPass);
+
+  return getCurrentUser().reauthenticateWithCredential(credential);
+};
