@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Flex, Stack, StackDivider, Heading, Center } from '@chakra-ui/react';
 import { EmailSignInForm } from '@/components/signin/EmailSignIn/EmailSignInForm';
 import { EmailSignInPageLinks } from '@/components/signin/EmailSignIn/EmailSignInPgaeLinks';
-import { useEmailLogin } from '@/hooks/pages/login/useEmailLogin';
+import { useEmailLogin } from '@/hooks/pages/login/email/useEmailLogin';
 
 const Login: FC = () => {
   const { redirectIfAuthorized, signIn } = useEmailLogin();
