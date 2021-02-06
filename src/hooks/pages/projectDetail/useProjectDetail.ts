@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useToast } from '@chakra-ui/react';
-import { useAuth } from '@/lib/auth';
+import { useAuth } from '@/contexts/auth';
 import { useProjectComments } from '@/hooks/shared/comment/useProjectComments';
 import { useLikeList } from '@/hooks/shared/like/useLikeList';
 import { useUpdateLikeList } from '@/hooks/shared/like/useUpdateLikeList';

@@ -1,4 +1,4 @@
-import { useAuth } from '@/lib/auth';
+import { useAuth } from '@/contexts/auth';
 import { useToast } from '@chakra-ui/react';
 import {
   signInWithGoogle as _signInWithGoogle,

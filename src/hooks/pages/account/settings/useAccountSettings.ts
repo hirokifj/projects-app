@@ -1,5 +1,5 @@
 import { useToast } from '@chakra-ui/react';
-import { useAuth } from '@/lib/auth';
+import { useAuth } from '@/contexts/auth';
 import { updateUserName, updateUserImg } from '@/api/user';
 import { AccountSettingsFormValue } from '@/components/user/AccountSettingForm';
 import { useRouter } from 'next/router';

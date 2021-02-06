@@ -1,4 +1,4 @@
-import { useAuth } from '@/lib/auth';
+import { useAuth } from '@/contexts/auth';
 import { useQuery } from 'react-query';
 import { useLikeList } from '@/hooks/shared/like/useLikeList';
 import { fetchUserLikedProjects } from '@/api/projects';

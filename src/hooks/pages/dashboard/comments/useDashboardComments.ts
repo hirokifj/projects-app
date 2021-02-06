@@ -1,5 +1,5 @@
 import { useToast } from '@chakra-ui/react';
-import { useAuth } from '@/lib/auth';
+import { useAuth } from '@/contexts/auth';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 import {
   fetchUserComments,

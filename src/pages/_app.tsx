@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { AppProps } from 'next/app';
-import { AuthProvider } from '@/lib/auth';
+import { AuthProvider } from '@/contexts/auth';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import theme from '@/styles/theme';
 import AppLayout from '@/components/layout/AppLyaout';

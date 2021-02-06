@@ -1,4 +1,4 @@
-import { useAuth } from '@/lib/auth';
+import { useAuth } from '@/contexts/auth';
 
 export const useAccount = () => {
   const { redirectIfUnAuthorized, user } = useAuth();

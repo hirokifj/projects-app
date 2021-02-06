@@ -1,4 +1,4 @@
-import { useAuth } from '@/lib/auth';
+import { useAuth } from '@/contexts/auth';
 import { useToast } from '@chakra-ui/react';
 import { signInWithEmail } from '@/api/user';
 import { getFirebaseErrMsgInJP } from '@/utils/firebase';

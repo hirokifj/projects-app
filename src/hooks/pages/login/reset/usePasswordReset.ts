@@ -1,4 +1,4 @@
-import { useAuth } from '@/lib/auth';
+import { useAuth } from '@/contexts/auth';
 import { useToast } from '@chakra-ui/react';
 import { PasswordResetFormValue } from '@/components/auth/Reset/PasswordResetForm';
 import { sendPasswordResetEmail } from '@/api/user';
