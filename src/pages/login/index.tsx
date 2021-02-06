@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Flex, Stack, StackDivider, Heading, Center } from '@chakra-ui/react';
-import { SocialSignInButtons } from '@/components/signin/SocialSignIn/SocialSignInButtons';
-import { SocialSignInPageLinks } from '@/components/signin/SocialSignIn/SocialSignInPageLinks';
+import { SocialSignInButtons } from '@/components/auth/SocialSignIn/SocialSignInButtons';
+import { SocialSignInPageLinks } from '@/components/auth/SocialSignIn/SocialSignInPageLinks';
 import { useLogin } from '@/hooks/pages/login/useLogin';
 
 const Login: FC = () => {

@@ -1,7 +1,7 @@
 import { useAuth } from '@/lib/auth';
 import { getFirebaseErrMsgInJP } from '@/utils/firebase';
 import { useToast } from '@chakra-ui/react';
-import { SignUpFormValue } from '@/components/signup/EmailSignUp/EmailSignUpForm';
+import { SignUpFormValue } from '@/components/auth/EmailSignUp/EmailSignUpForm';
 
 export const useEmailSignUp = () => {
   const { redirectIfAuthorized, signUpWithEmail } = useAuth();

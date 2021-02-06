@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Flex, Stack, StackDivider, Heading, Center } from '@chakra-ui/react';
-import { EmailSignInForm } from '@/components/signin/EmailSignIn/EmailSignInForm';
-import { EmailSignInPageLinks } from '@/components/signin/EmailSignIn/EmailSignInPgaeLinks';
+import { EmailSignInForm } from '@/components/auth/EmailSignIn/EmailSignInForm';
+import { EmailSignInPageLinks } from '@/components/auth/EmailSignIn/EmailSignInPgaeLinks';
 import { useEmailLogin } from '@/hooks/pages/login/email/useEmailLogin';
 
 const Login: FC = () => {
