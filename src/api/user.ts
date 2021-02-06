@@ -44,6 +44,14 @@ export const updateUserEmail = (
 ): Promise<void> =>
   reAuthEmailUser(password).then(() => getCurrentUser().updateEmail(newEmail));
 
+export const updatePassword = (
+  newPassword: string,
+  currentPassword: string,
+): Promise<void> =>
+  reAuthEmailUser(currentPassword).then(() =>
+    getCurrentUser().updatePassword(newPassword),
+  );
+
 const reAuthEmailUser = (
   currentPass: string,
 ): Promise<firebase.auth.UserCredential> => {
