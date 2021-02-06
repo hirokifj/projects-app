@@ -22,10 +22,10 @@ export const getFirebaseErrMsgInJP = (
       errMsg = '無効のユーザーアカウントです。';
       break;
     case 'auth/user-not-found':
-      errMsg = 'メールアドレス・パスワードが一致しません。';
+      errMsg = '認証情報が一致しません。';
       break;
     case 'auth/wrong-password':
-      errMsg = 'メールアドレス・パスワードが一致しません。';
+      errMsg = '認証情報が一致しません。';
       break;
     case 'auth/popup-blocked':
       errMsg = 'ブラウザによってポップアップがブロックされました。';
