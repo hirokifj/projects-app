@@ -9,7 +9,7 @@ import {
 } from '@/api/projects';
 import { Project } from '@/types/project';
 import { isNonEmptyArray } from '@/utils/array';
-import { ProjectDetailContent } from '@/components/project/ProjectDetailContent';
+import { ProjectDetailContent } from '@/components/project/ProjectDetailContent/ProjectDetailContent';
 import { CommentForm } from '@/components/comment/CommentForm/';
 import { CommentList } from '@/components/comment/CommentList';
 import { RelatedProjectList } from '@/components/project/RelatedProjectList/';
