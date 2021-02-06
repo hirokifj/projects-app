@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import NextLink from 'next/link';
 import { ParsedUrlQuery } from 'querystring';
 import { Box, Stack, Heading, Text, Divider, Button } from '@chakra-ui/react';
 import {
@@ -103,7 +104,9 @@ const ProjectSingle: FC<Props> = ({ project, relatedProjects }) => {
           <Stack spacing="4" textAlign="right" mt={10}>
             <Text color="gray.500">あなたのコメントを待っています。</Text>
             <Box>
-              <Button size="md">ログイン</Button>
+              <NextLink href="/login" passHref>
+                <Button size="md">ログイン</Button>
+              </NextLink>
             </Box>
           </Stack>
         )}
