@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { useAuth } from '@/lib/auth';
 import { Flex, Stack, StackDivider, Heading, Center } from '@chakra-ui/react';
-import { EmailSignInForm } from '@/components/signin/EmailSignInForm';
-import { EmailSignInPageLinks } from '@/components/signin/EmailSignInPgaeLinks';
+import { EmailSignInForm } from '@/components/signin/EmailSignIn/EmailSignInForm';
+import { EmailSignInPageLinks } from '@/components/signin/EmailSignIn/EmailSignInPgaeLinks';
+import { useEmailLogin } from '@/hooks/pages/login/useEmailLogin';
 
 const Login: FC = () => {
-  const { redirectIfAuthorized } = useAuth();
+  const { redirectIfAuthorized, signIn } = useEmailLogin();
   redirectIfAuthorized();
 
   return (
@@ -32,7 +32,7 @@ const Login: FC = () => {
           </Heading>
         </Center>
         <Stack direction="column" width="90%" mx="auto" spacing={8}>
-          <EmailSignInForm />
+          <EmailSignInForm onSubmit={signIn} />
           <EmailSignInPageLinks />
         </Stack>
       </Stack>
