@@ -10,6 +10,11 @@ const getCurrentUser: () => firebase.User = () => {
   return currentUser;
 };
 
+export const sendPasswordResetEmail = (email: string): Promise<void> =>
+  auth().sendPasswordResetEmail(email, {
+    url: `${process.env.NEXT_PUBLIC_BASE_URL as string}/login`,
+  });
+
 export const updateUserName = (userName: string) =>
   getCurrentUser().updateProfile({
     displayName: userName,
