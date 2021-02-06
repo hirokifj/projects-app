@@ -1,9 +1,11 @@
 import { FC } from 'react';
 import { Button, Stack } from '@chakra-ui/react';
 import { InputControl } from '@/components/core/InputControl';
-import { useFirebaseEmailSignUp } from '@/hooks/pages/auth/useFirebaseEmailSignUp';
+import { useEmailSignUpForm, SignUpFormValue } from './useEmailSignUpForm';
 
-export const SignUpForm: FC = () => {
+export const SignUpForm: FC<{
+  onSubmit: (data: SignUpFormValue) => Promise<void>;
+}> = ({ onSubmit }) => {
   const {
     signUp,
     loading,
@@ -12,7 +14,7 @@ export const SignUpForm: FC = () => {
     passwordRules,
     emailErrMsg,
     passwordErrMsg,
-  } = useFirebaseEmailSignUp();
+  } = useEmailSignUpForm(onSubmit);
 
   return (
     <Stack as="form" spacing={6} onSubmit={signUp}>

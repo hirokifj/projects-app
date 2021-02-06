@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import { useAuth } from '@/lib/auth';
 import { useForm } from 'react-hook-form';
-import firebase from 'firebase';
-import { getFirebaseErrMsgInJP } from '@/utils/firebase';
-import { useToast } from '@chakra-ui/react';
 
 export interface SignUpFormValue {
   readonly email: string;
   readonly password: string;
 }
 
-export const useFirebaseEmailSignUp = () => {
+export const useEmailSignUpForm = (
+  onSubmit: (data: SignUpFormValue) => Promise<void>,
+) => {
   // react-hook-form v7で修正予定。
   // eslint-disable-next-line @typescript-eslint/unbound-method
   const {
@@ -18,27 +16,16 @@ export const useFirebaseEmailSignUp = () => {
     register: RHFRegister,
     errors,
   } = useForm<SignUpFormValue>();
-  const { signUpWithEmail } = useAuth();
-  const toast = useToast();
 
   const [loading, setLoading] = useState(false);
 
-  const signUp = RHFhandleSubmit((data: SignUpFormValue) => {
+  const signUp = RHFhandleSubmit(async (data: SignUpFormValue) => {
     setLoading(true);
-    signUpWithEmail(data.email, data.password).catch(
-      (error: firebase.FirebaseError) => {
-        const errMsg = getFirebaseErrMsgInJP(error);
-
-        setLoading(false);
-        toast({
-          title: 'エラー',
-          description: errMsg,
-          status: 'error',
-          duration: 5000,
-          isClosable: true,
-        });
-      },
-    );
+    try {
+      await onSubmit(data);
+    } finally {
+      setLoading(false);
+    }
   });
 
   const emailRules = {
