@@ -13,18 +13,6 @@ const useProvideAuth = () => {
   const isAuthorized = authState === 'Authorized';
   const isUnAuthorized = authState === 'UnAuthorized';
 
-  const signInWithGoogle = () =>
-    auth().signInWithPopup(new auth.GoogleAuthProvider());
-
-  const signInWithGithub = () =>
-    auth().signInWithPopup(new auth.GithubAuthProvider());
-
-  const signInWithEmail = (email: string, password: string) =>
-    auth().signInWithEmailAndPassword(email, password);
-
-  const signUpWithEmail = (email: string, password: string) =>
-    auth().createUserWithEmailAndPassword(email, password);
-
   const refreshUser = () => {
     const { currentUser } = auth();
 
@@ -65,10 +53,6 @@ const useProvideAuth = () => {
     authState,
     isAuthorized,
     isUnAuthorized,
-    signInWithGoogle,
-    signInWithGithub,
-    signInWithEmail,
-    signUpWithEmail,
     redirectIfAuthorized,
     redirectIfUnAuthorized,
   } as const;

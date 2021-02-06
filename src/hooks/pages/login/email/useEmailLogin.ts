@@ -1,10 +1,12 @@
 import { useAuth } from '@/lib/auth';
-import { getFirebaseErrMsgInJP } from '@/utils/firebase';
 import { useToast } from '@chakra-ui/react';
+import { signInWithEmail } from '@/api/user';
+import { getFirebaseErrMsgInJP } from '@/utils/firebase';
+
 import { SignInFormValue } from '@/components/auth/EmailSignIn/EmailSignInForm';
 
 export const useEmailLogin = () => {
-  const { redirectIfAuthorized, signInWithEmail } = useAuth();
+  const { redirectIfAuthorized } = useAuth();
   const toast = useToast();
 
   const signIn = async ({

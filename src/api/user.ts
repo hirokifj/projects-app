@@ -10,6 +10,24 @@ const getCurrentUser: () => firebase.User = () => {
   return currentUser;
 };
 
+export const signInWithGoogle = (): Promise<firebase.auth.UserCredential> =>
+  auth().signInWithPopup(new auth.GoogleAuthProvider());
+
+export const signInWithGithub = (): Promise<firebase.auth.UserCredential> =>
+  auth().signInWithPopup(new auth.GithubAuthProvider());
+
+export const signInWithEmail = (
+  email: string,
+  password: string,
+): Promise<firebase.auth.UserCredential> =>
+  auth().signInWithEmailAndPassword(email, password);
+
+export const signUpWithEmail = (
+  email: string,
+  password: string,
+): Promise<firebase.auth.UserCredential> =>
+  auth().createUserWithEmailAndPassword(email, password);
+
 export const sendPasswordResetEmail = (email: string): Promise<void> =>
   auth().sendPasswordResetEmail(email, {
     url: `${process.env.NEXT_PUBLIC_BASE_URL as string}/login`,

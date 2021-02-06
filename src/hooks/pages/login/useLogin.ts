@@ -1,13 +1,13 @@
 import { useAuth } from '@/lib/auth';
 import { useToast } from '@chakra-ui/react';
+import {
+  signInWithGoogle as _signInWithGoogle,
+  signInWithGithub as _signInWithGithub,
+} from '@/api/user';
 import { getFirebaseErrMsgInJP } from '@/utils/firebase';
 
 export const useLogin = () => {
-  const {
-    redirectIfAuthorized,
-    signInWithGoogle: _signInWithGoogle,
-    signInWithGithub: _signInWithGithub,
-  } = useAuth();
+  const { redirectIfAuthorized } = useAuth();
   const toast = useToast();
 
   const signInWithGoogle = async (): Promise<void> => {
