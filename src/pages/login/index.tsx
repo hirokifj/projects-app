@@ -1,11 +1,15 @@
 import { FC } from 'react';
-import { useAuth } from '@/lib/auth';
 import { Flex, Stack, StackDivider, Heading, Center } from '@chakra-ui/react';
-import { SocialSignInButtons } from '@/components/signin/SocialSignInButtons';
-import { SocialSignInPageLinks } from '@/components/signin/SocialSignInPageLinks';
+import { SocialSignInButtons } from '@/components/signin/SocialSignIn/SocialSignInButtons';
+import { SocialSignInPageLinks } from '@/components/signin/SocialSignIn/SocialSignInPageLinks';
+import { useLogin } from '@/hooks/pages/login/useLogin';
 
 const Login: FC = () => {
-  const { redirectIfAuthorized } = useAuth();
+  const {
+    redirectIfAuthorized,
+    signInWithGoogle,
+    signInWithGithub,
+  } = useLogin();
   redirectIfAuthorized();
 
   return (
@@ -32,7 +36,10 @@ const Login: FC = () => {
           </Heading>
         </Center>
         <Stack direction="column" width="80%" mx="auto" spacing={8}>
-          <SocialSignInButtons />
+          <SocialSignInButtons
+            onGoogleButtonClick={signInWithGoogle}
+            onGithubButonClick={signInWithGithub}
+          />
           <SocialSignInPageLinks />
         </Stack>
       </Stack>
