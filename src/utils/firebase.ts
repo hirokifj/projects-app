@@ -22,7 +22,7 @@ export const getFirebaseErrMsgInJP = (
       errMsg = '無効のユーザーアカウントです。';
       break;
     case 'auth/user-not-found':
-      errMsg = '認証情報が一致しません。';
+      errMsg = '認証情報に一致するユーザーが存在しません。';
       break;
     case 'auth/wrong-password':
       errMsg = '認証情報が一致しません。';
