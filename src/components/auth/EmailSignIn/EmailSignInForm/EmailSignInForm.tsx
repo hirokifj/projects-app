@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { Button, Stack } from '@chakra-ui/react';
+import NextLink from 'next/link';
+import { Button, Stack, Box, Link } from '@chakra-ui/react';
 import { InputControl } from '@/components/core/InputControl';
 import { useEmailSignIn, SignInFormValue } from './useEmailSignInForm';
 
@@ -28,16 +29,26 @@ export const EmailSignInForm: FC<{
         isInvalid={!!emailErrMsg}
         errorMsg={emailErrMsg}
       />
-      <InputControl
-        inputId="password"
-        type="password"
-        name="password"
-        label="パスワード"
-        register={RHFRegister}
-        rules={passwordRules}
-        isInvalid={!!passwordErrMsg}
-        errorMsg={passwordErrMsg}
-      />
+      <Box>
+        <InputControl
+          inputId="password"
+          type="password"
+          name="password"
+          label="パスワード"
+          register={RHFRegister}
+          rules={passwordRules}
+          isInvalid={!!passwordErrMsg}
+          errorMsg={passwordErrMsg}
+        />
+        <Box mt="2" textAlign="right">
+          <NextLink href="/login/reset" passHref>
+            <Link fontSize="14px" color="blue.400">
+              パスワードをお忘れですか？
+            </Link>
+          </NextLink>
+        </Box>
+      </Box>
+
       <Button
         type="submit"
         height="52px"
