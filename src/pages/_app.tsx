@@ -6,7 +6,7 @@ import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import theme from '@/styles/theme';
 import nprogress from '@/lib/nprogress';
 import 'nprogress/nprogress.css';
-import AppLayout from '@/components/layout/AppLyaout';
+import { AppLayout } from '@/components/layout/AppLayout';
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   if (process.browser) {
