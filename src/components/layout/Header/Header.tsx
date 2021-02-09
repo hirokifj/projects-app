@@ -43,7 +43,6 @@ export const Header: FC = () => {
                   borderColor="gray.200"
                   transition="background-color 0.4s"
                   _hover={{
-                    bg: 'black',
                     opacity: '0.8',
                   }}
                 />
