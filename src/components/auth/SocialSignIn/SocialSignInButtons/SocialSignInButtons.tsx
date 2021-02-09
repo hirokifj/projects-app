@@ -20,7 +20,7 @@ export const SocialSignInButtons: FC<{
       }}
       onClick={() => onGoogleButtonClick()}
     >
-      Googleでログイン
+      Login with Google
     </Button>
     <Button
       leftIcon={<Icon as={FaGithub} mr="10px" fontSize="24px" />}
@@ -35,7 +35,7 @@ export const SocialSignInButtons: FC<{
       }}
       onClick={() => onGithubButonClick()}
     >
-      GitHubでログイン
+      Login with GitHub
     </Button>
   </Stack>
 );

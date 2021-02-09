@@ -51,7 +51,7 @@ export const SignUpForm: FC<{
         }}
         isLoading={loading}
       >
-        登録
+        Sign Up
       </Button>
     </Stack>
   );

@@ -62,7 +62,7 @@ export const EmailSignInForm: FC<{
         }}
         isLoading={loading}
       >
-        ログイン
+        Login
       </Button>
     </Stack>
   );

@@ -28,7 +28,7 @@ export const Header: FC = () => {
           {isUnAuthorized && (
             <NextLink href="/login" passHref>
               <Button as="a" colorScheme="gray">
-                ログイン&nbsp;/&nbsp;登録
+                Login
               </Button>
             </NextLink>
           )}
