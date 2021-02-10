@@ -17,12 +17,24 @@ export const Header: FC = () => {
         alignItems="center"
       >
         <Flex alignItems="center">
-          <Heading mr="40px" lineHeight="1" size="lg">
-            Finder
-          </Heading>
-          <NextLink href="/list" passHref>
-            <Link>掲載リスト</Link>
+          <NextLink href="/" passHref>
+            <Heading as="a" mr="40px" lineHeight="1" size="lg">
+              Finder
+            </Heading>
           </NextLink>
+          <NextLink href="/projects" passHref>
+            <Link mr="24px">掲載リスト</Link>
+          </NextLink>
+          {isAuthorized && (
+            <NextLink href="/dashboard" passHref>
+              <Link mr="24px">お気に入り</Link>
+            </NextLink>
+          )}
+          {isAuthorized && (
+            <NextLink href="/dashboard/comments" passHref>
+              <Link>自分のコメント</Link>
+            </NextLink>
+          )}
         </Flex>
         <Flex>
           {isUnAuthorized && (
